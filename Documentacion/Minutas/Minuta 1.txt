@@ -1,0 +1,4 @@
+Nos juntamos personalmente el 20 de Septiembre para aprender a usar la metodología Kanban mediante Kanboard, 
+comenzamos a desarrollar la historia del juego, determinamos los personajes principales, 
+que será RPG, que va a tener 2 niveles o mapas y que va a tener 2 jefes, 
+uno luego de cada nivel.

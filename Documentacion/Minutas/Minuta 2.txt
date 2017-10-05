@@ -1,0 +1,4 @@
+Se hablo sobre los atributos del personaje, que tipos de ataque vamos a utilizar,
+las diferencias entre personajes, enemigos y jefes, y tambien establecimos
+un sistema de compra donde podemos obtener armas y pociones, y comenzamos
+a hacer los diagramas de clases (Personaje). fecha: 4-10-2017
