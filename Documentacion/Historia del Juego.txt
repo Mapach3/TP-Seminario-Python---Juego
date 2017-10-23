@@ -1,0 +1,11 @@
+PROTAGONISTA: Gudi
+Descripcion: heroe de la aldea Burzaki que fue traicionado por su hermano en la guerra contra la aldea Adroku.
+VILLANO: Jasaskar
+Descripcion: hermano de Gudi, este lo traiciona a cambio de convertirse el heroe de la aldea Adroku, ya que siempre se sintio inferior a su hermano que fue siempre admirado por los habitantes de su aldea.
+
+INTRO: pantalla negra explicando los sucesos:
+CAPITULO 1: Luego de 5 años, Gudi decide comenzar su venganza, pero para a Adroku, debe cruzar su antigua aldea Burzaki, al llegar, se encuentra con su aldea repleta de  guardias que descubren su identidad. Gudi cree que esta es la oportunidad perfecta para ver si su entrenamiento dio frutos.  Por lo que decide retomar la aldea entera.
+Al final del nivel, se encuentra con el comandante Drakiri, al derrotarlo, uno de sus soldados escapa a Adroku para informar sobre el hecho.
+------------------------------------------------------------------------------------------------------------------
+CUTSCENE: El soldado llega a Adroku y nos llevamos la sorpresa de que Jasaskar era el nuevo lider de la aldea, al enterarse de los sucesos, comienza a sospechar de que si su hermano estaba realmente muerto o no.
+------------------------------------------------------------------------------------------------------------------
