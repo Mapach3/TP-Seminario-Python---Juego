@@ -1,0 +1,23 @@
+PORTADA 
+
+VENGEANCE
+
+Manual del Juego
+
+
+INDICE
+
+- Historia
+
+- Menu Principal
+
+- Desarrollo del juego
+
+	-Personaje
+	  -Stats, blabla
+	- Niveles
+	  -Aldea, Hielo, Bossfight
+	- Enemigos
+	  -Cuando los tengamos definidos, hablar de esto
+
+
