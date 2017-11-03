@@ -1,0 +1,80 @@
+
+
+============================= SEMINARIO DE LENGUAJES ========================================
+				       PAPER 
+
++SHORT PAPER: HASTA 7 HOJAS.
++LONG PAPER : HASTA 14 HOJAS.
+
+
+
+
+
++ TITULO: Se pone al final
+
+
+
+
++AUTORES DEL PROYECTO
+-Bombara, Martin Nicolas.
+-Contento, Guido Ezequiel.
+-D'Alessandro, Stefano Tomas.
+-Montaña, Ignacio.
+
+INDICE
+
+
+
++ ABSTRACT : Resumen de 150 palabras del trabajo
+- Hablar de Metodologias Agiles y Controlador de Versiones
+y como lo aplicamos a la creacion de un simple juego de rol.
+
+
+
++KEYWORDS: Palabras clave con las que rotulamos el TP (8 - 15)
+Python, Pygame, Libreria,Metodologias Agiles, Kanban,Backlot, GIThub, Controlador de Versiones-
+Python, Pygame, Library, Agile Methodologies, Kanban, Backlot,GIThub, Version Control System
+
+
+
++Introduccion (Preguntar que poner aca)
+
+
+
++ ESTADO DE LA CUESTION (Como llegamos a detectar un problema o buscamos hacer lo que hicimos)
+-Las empresas usan metodologias agiles hoy en día para el trabajo de sus proyectos.
+-Son aplicables estas metodologías a un juego de computadora programado desde cero?
+
+
+
+
+
++ PROBLEMA Y SOLUCION
+-Construir un juego en 3 meses con metodologias agiles
+-Hablar de como fue el proceso usandolas.
+
+
+
++ CONCLUSION
+-Se logró terminar el proyecto?
+-Las metodologias aplicadas sirvieron para que este pueda ser terminado mas rapido o
+significaron un estorbo en la realizacion del proyecto?
+
+
+
+
+
++ FUTURA LINEA DE INVESTIGACION ("Donde una tesis se hace a prueba de balas")
+-Proyectos mas grandes? Juegos AAA for example.
+-Utilizar otras metodologias de trabajo? Facilitarian el proyecto
+
++AGRADECIMIENTOS
+
+
+
+
++REFERENCIAS: 
+-Donde se bajo Pygame
+-Version de Python Usada	    	
+-Texto o sitios usados para entender pygame
+
