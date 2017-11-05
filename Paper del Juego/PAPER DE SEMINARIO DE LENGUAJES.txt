@@ -25,19 +25,22 @@ INDICE
 
 
 
-+ ABSTRACT : Resumen de 150 palabras del trabajo
++ ABSTRACT : Resumen de 150 palabras del trabajo ((--english and spanish--))
 - Hablar de Metodologias Agiles y Controlador de Versiones
 y como lo aplicamos a la creacion de un simple juego de rol.
 
 
 
-+KEYWORDS: Palabras clave con las que rotulamos el TP (8 - 15)
-Python, Pygame, Libreria,Metodologias Agiles, Kanban,Backlot, GIThub, Controlador de Versiones-
-Python, Pygame, Library, Agile Methodologies, Kanban, Backlot,GIThub, Version Control System
++KEYWORDS: Palabras clave con las que rotulamos el TP (8 - 15) ((--english and spanish--))
+Python, Pygame, Libreria,Metodologias Agiles, Kanban, Scrum, Backlot, GIThub, Controlador de Versiones, RPG, Jefe Final
+Python, Pygame, Library, Agile Methodologies, Kanban, Scrum, Backlot,GIThub, Version Control System, RPG, Final Boss
 
 
 
-+Introduccion (Preguntar que poner aca)
++INTRODUCCION
+-Parrafo introductorio
+-Explicar las metodologias agiles
+-Explicar python y sus caracteristicas y porque fue elegido como lenguaje
 
 
 
@@ -69,6 +72,7 @@ significaron un estorbo en la realizacion del proyecto?
 -Utilizar otras metodologias de trabajo? Facilitarian el proyecto
 
 +AGRADECIMIENTOS
+-A Hoppe, a Marcelo, a la produccion y a ignacio por poner casa siempre.
 
 
 
@@ -77,4 +81,5 @@ significaron un estorbo en la realizacion del proyecto?
 -Donde se bajo Pygame
 -Version de Python Usada	    	
 -Texto o sitios usados para entender pygame
+-Clases de merlino para lo de kanban scrum blablabla
 
