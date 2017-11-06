@@ -16,11 +16,10 @@ class Personaje(pygame.sprite.Sprite):
         self.imagen_actual = 0
 
         #estados
+        self.suceso = "quieto"
         self.estaVivo = True
         self.moviendo = False
-        self.espadazo = False
-        self.flechazo = False
-        self.poder = False
+        self.atacando = False
         self.vivo = True
         self.subioLvl = False
         self.tienePotas = True
@@ -39,57 +38,70 @@ class Personaje(pygame.sprite.Sprite):
         self.lvl = 1
 
     def mover(self,vx,vy):
-        if vx == 0 and vy ==0:
-            self.moviendo=False
-        else: 
-            self.moviendo=True
+        self.rect.move_ip(vx*self.velocidad,vy*self.velocidad)
+    
+    
+    def update(self, superficie, t, subioLvl, suceso,vx,vy):
+        if vx == 0 and vy == 0:
+            self.movimiento = 0
+            self.moviendo = False
+        else:
+            self.moviendo = True
+            self.movimiento = 1
             if vx < 0: 
                 self.orientacion = 0
             if vx > 0:
                 self.orientacion = 1
-            if vx == 0 and vy == 0:
-                self.movimiento = 0
-            else:
-                self.movimiento = 1
-        self.rect.move_ip(vx*self.velocidad,vy*self.velocidad)
-    
-    
-    def update(self, superficie, t, subioLvl, suceso):
         if self.hp <= 0:
             self.estaVivo = False
         if t.tde8 == 8 and self.subioLvl:
             self.subioLvl = False
         if self.exp >= self.expParaSubir:
-            self.subirLvl(subirLvl, t)
+            self.subirLvl(subioLvl, t)
         if suceso == "usar pota":
             self.usarPota()
         if suceso == "espadazo":
             self.movimiento = 2
+            self.moviendo = False
+            self.atacando = True
         if suceso == "poder":
             self.movimiento = 3
+            self.moviendo = False
+            self.atacando = True
         if suceso == "flechazo":
             self.movimiento = 4
+            self.moviendo = False
+            self.atacando = True
         if self.estaVivo == False:
             self.movimiento = 5
+            self.atacando = True
         if suceso == "es golpeado":
             self.movimiento = 6
-        if t.t == 1 and self.moviendo == True:
-            self.animar()
+        if self.moviendo == True and self.atacando == False:
+            self.mover(vx,vy)
+        else:
+            self.movimiento = 0
+        self.animacion = self.imagenes[self.orientacion][self.movimiento]
+        if t.t == 1:
+            self.imagen_actual += 1
+        if self.imagen_actual >= len(self.animacion):
+            self.imagen_actual = 0
+            if self.movimiento != 1:
+                self.atacando = False
+                self.movimiento = 0
+        self.imagen = self.imagenes[self.orientacion][self.movimiento][self.imagen_actual]
         superficie.blit(self.imagen,self.rect)
 
-    def animar(self):
-        self.imagen_actual += 1
-        if self.imagen_actual == len(self.animacion):
-            self.imagen_actual = 0
-        self.imagen = self.imagenes[self.orientacion][self.movimiento][self.imagen_actual]
+        
+        
 
-    def subirLvl(self, superficie, subirLvl, t):
+    def subirLvl(self, superficie, subioLvl, t):
         self.subioLvl = True
         self.lvl += 1
         t.tde8 = 0
         self.exp = 0
         self.expParaSubir += self.expParaSubir/4
-        subirLvl.play()
+        ##subirLvl.play()
         self.danio += self.danio/4
         self.hpMax += self.hpMax/4
 
@@ -143,15 +155,16 @@ class Times(object):
 
 def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso):
     fondo.update(pantalla,vx,vy)
-    personaje.update(pantalla, t, False, suceso)
+    personaje.update(pantalla, t, False,suceso,vx,vy)
 
 def main():
     import pygame
+    suceso="unknown"
     pygame.init()
     pantalla=pygame.display.set_mode((800,600))
     salir=False
     reloj = pygame.time.Clock()
-    fondo = Fondo(pygame.image.load("C:\Users\matiste\Documents\GitHub\TP-Seminario-Python---Juego\Documentacion\Mapas Finales\MAPAS FINALES JUEGO SEMINARIO\Mapa1Final.png"))
+    fondo = Fondo(pygame.image.load("C:\Python27\Vengeance\Mapa1Final.png"))
     cursor = Cursor()
 
     personaje=Personaje(ListaAnimacionesProtagonista)
@@ -183,6 +196,15 @@ def main():
                     if event.key == pygame.K_DOWN:
                         downsigueapretada = True
                         vy = 1
+                    if event.key == pygame.K_a:
+                        suceso="espadazo"
+                    if event.key == pygame.K_s:
+                        suceso="flechazo"
+                    if event.key == pygame.K_d:
+                        suceso="poder"
+                    if event.key == pygame.K_q:
+                        suceso="usar pota"
+                    
                         
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT:
@@ -209,13 +231,12 @@ def main():
                             vy = -1
                         else:
                             vy=0                    
-
-
+                    
         pantalla.fill((0,0,170))
-        personaje.mover(vx, vy)
-        suceso = "x"
         t.update_times()
-        moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso)   
+        moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso)
+        if personaje.movimiento == 0:
+            suceso = "quieto"
         cursor.updatecursor()  
         pygame.display.update()
         
