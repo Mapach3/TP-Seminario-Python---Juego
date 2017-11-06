@@ -60,41 +60,41 @@ ImgPodIz4=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\poder4
 
 ImgPoderIz=[ImgPodIz1,ImgPodIz2,ImgPodIz3,ImgPodIz4]
 
-ImgArcIz1=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\arco1.png").convert_alpha()
-ImgArcIz2=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\arco2.png").convert_alpha()
-ImgArcIz3=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\arco3.png").convert_alpha()
-ImgArcIz4=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\arco4.png").convert_alpha()
-ImgArcIz5=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\arco5.png").convert_alpha()
-ImgArcIz6=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\arco6.png").convert_alpha()
-ImgArcIz7=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\arco7.png").convert_alpha()
-ImgArcIz8=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\arco8.png").convert_alpha()
-ImgArcIz9=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\arco9.png").convert_alpha()
+ImgArcIz1=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\Arco1.png").convert_alpha()
+ImgArcIz2=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\Arco2.png").convert_alpha()
+ImgArcIz3=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\Arco3.png").convert_alpha()
+ImgArcIz4=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\Arco4.png").convert_alpha()
+ImgArcIz5=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\Arco5.png").convert_alpha()
+ImgArcIz6=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\Arco6.png").convert_alpha()
+ImgArcIz7=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\Arco7.png").convert_alpha()
+ImgArcIz8=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\Arco8.png").convert_alpha()
+ImgArcIz9=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\Arco9.png").convert_alpha()
 
 ImgArcoIz=[ImgArcIz1,ImgArcIz2,ImgArcIz3,ImgArcIz4,ImgArcIz5,ImgArcIz6,ImgArcIz7,ImgArcIz8,ImgArcIz9]
 
 
-ImgArcDe1=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\arco1.png").convert_alpha()
-ImgArcDe2=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\arco2.png").convert_alpha()
-ImgArcDe3=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\arco3.png").convert_alpha()
-ImgArcDe4=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\arco4.png").convert_alpha()
-ImgArcDe5=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\arco5.png").convert_alpha()
-ImgArcDe6=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\arco6.png").convert_alpha()
-ImgArcDe7=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\arco7.png").convert_alpha()
-ImgArcDe8=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\arco8.png").convert_alpha()
-ImgArcDe9=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\arco9.png").convert_alpha()
+ImgArcDe1=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\Arco1.png").convert_alpha()
+ImgArcDe2=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\Arco2.png").convert_alpha()
+ImgArcDe3=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\Arco3.png").convert_alpha()
+ImgArcDe4=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\Arco4.png").convert_alpha()
+ImgArcDe5=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\Arco5.png").convert_alpha()
+ImgArcDe6=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\Arco6.png").convert_alpha()
+ImgArcDe7=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\Arco7.png").convert_alpha()
+ImgArcDe8=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\Arco8.png").convert_alpha()
+ImgArcDe9=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\Arco9.png").convert_alpha()
 
 ImgArcoDe=[ImgArcDe1,ImgArcDe2,ImgArcDe3,ImgArcDe4,ImgArcDe5,ImgArcDe6,ImgArcDe7,ImgArcDe8,ImgArcDe9]
 
-imagen1=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\Standby.png").convert_alpha()
-ImgQuietoDe=[imagen1]
+imagenQuieto1=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\Standby.png").convert_alpha()
+ImgQuietoDe=[imagenQuieto1]
 
-imageen1=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\Standby.png").convert_alpha()
-ImgQuietoIz=[imageen1]
+imagenQuieto2=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\Standby.png").convert_alpha()
+ImgQuietoIz=[imagenQuieto2]
 
 
 
-ImgMuDe1=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\dañoymuerte1.png").convert_alpha()
-ImgMuDe2=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\muerte2.png").convert_alpha()
+ImgMuDe1=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\damageymuerte1.png").convert_alpha()
+ImgMuDe2=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\Muerte2.png").convert_alpha()
 ImgMuDe3=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\muerte3.png").convert_alpha()
 ImgMuDe4=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\muerte4.png").convert_alpha()
 ImgMuDe5=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\muerte5.png").convert_alpha()
@@ -104,8 +104,8 @@ ImgMuDe7=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\muerte7.p
 ImgMuerteDe=[ImgMuDe1,ImgMuDe2,ImgMuDe3,ImgMuDe4,ImgMuDe5,ImgMuDe6,ImgMuDe7]
 
 
-ImgMuIz1=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\dañoymuerte1.png").convert_alpha()
-ImgMuIz2=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\muerte2.png").convert_alpha()
+ImgMuIz1=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\damageymuerte1.png").convert_alpha()
+ImgMuIz2=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\Muerte2.png").convert_alpha()
 ImgMuIz3=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\muerte3.png").convert_alpha()
 ImgMuIz4=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\muerte4.png").convert_alpha()
 ImgMuIz5=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\muerte5.png").convert_alpha()
@@ -114,9 +114,13 @@ ImgMuIz7=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\muerte7
 
 ImgMuerteIz=[ImgMuIz1,ImgMuIz2,ImgMuIz3,ImgMuIz4,ImgMuIz5,ImgMuIz6,ImgMuIz7]
 
+ImagenDamageDe=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Derecha\damageymuerte1.png").convert_alpha()
+ImgDamageDe=[ImagenDamageDe]
 
+ImagenDamageIz=pygame.image.load("C:\Users\Ignacio\Desktop\Personaje\Izquierda\damageymuerte1.png").convert_alpha()
+ImgDamageIz=[ImagenDamageIz]
 
-ListaImagenesDerecha=[ImgQuietoDe,ImgDCam,ImgAtaquDe,ImgPoderDe,ImgArcoDe,ImgMuerteDe]
-ListaImagenesIzquierda=[ImgQuietoIz,ImgICam,ImgAtaqueIz,ImgPoderIz,ImgArcoIz,ImgMuerteIz]
+ListaImagenesDerecha=[ImgQuietoDe,ImgDCam,ImgAtaquDe,ImgPoderDe,ImgArcoDe,ImgMuerteDe,ImgDamageDe]
+ListaImagenesIzquierda=[ImgQuietoIz,ImgICam,ImgAtaqueIz,ImgPoderIz,ImgArcoIz,ImgMuerteIz,ImgDamageIz]
 
 ListaAnimacionesProtagonista=[ListaImagenesDerecha,ListaImagenesIzquierda]
