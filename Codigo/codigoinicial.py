@@ -3,14 +3,19 @@ import time
 from pygame import font
 
 
+
 class Fondo(pygame.sprite.Sprite):
+    import pygame
+    
     def __init__(self):
         self.imagen=pygame.image.load("Vengeance\Mapa1Final.png").convert_alpha()
         self.rect=self.imagen.get_rect()
     def update(self,pantalla,vx,vy):
         self.rect.move_ip(-vx,-vy)
         pantalla.blit(self.imagen,self.rect)
-        
+
+
+      
         
         
         
@@ -114,6 +119,12 @@ class Player(pygame.sprite.Sprite):
         
 def main(cargar=False):
     import pygame
+    import time
+    pygame.init()
+
+    
+    pygame.mixer.music.load("Sonidos/bosque.mid")
+    pygame.mixer.music.play(300)
     
     pygame.init()
     pantalla=pygame.display.set_mode((800,600))
@@ -131,7 +142,9 @@ def main(cargar=False):
     #COLORCITOS
     rojo=(250,0,0)
     
-    
+    time.sleep(2)
+    pygame.mixer.music.load("Sonidos/bosque.mid")
+    pygame.mixer.music.play(300)
    
     
     #auxiliares para el movimiento
@@ -217,12 +230,13 @@ def menu():
     import pygame
     pygame.init()
     
-    
+    pygame.mixer.music.load("Sonidos/menu.mid")
     pantalla=pygame.display.set_mode((900,700))
     pygame.display.set_caption("Vengeance")
     relojmenu = pygame.time.Clock()
     titulo=pygame.image.load("Vengeance/Titulo.png").convert_alpha()
     descripcion=pygame.image.load("Vengeance/descripcion.png").convert_alpha()
+    pygame.mixer.music.play(30)
     
     newgame = Boton(pygame.image.load("Vengeance/jugar1.png").convert_alpha(),
                     pygame.image.load("Vengeance/jugar2.png").convert_alpha(),280,290)
@@ -240,13 +254,18 @@ def menu():
     
     cont=False
     
+    pygame.mixer.stop()
     
     
     c1=cursor()
     loadgamebool=None
     
+    
+    
     #Loop Principal!
     while True:
+        
+        
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 pygame.quit()           # RETURN NONE PARA SALIR
