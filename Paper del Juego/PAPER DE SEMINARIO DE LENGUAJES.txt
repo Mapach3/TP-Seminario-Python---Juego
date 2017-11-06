@@ -57,8 +57,9 @@ Python, Pygame, Library, Agile Methodologies, Kanban, Scrum, Backlot,GIThub, Ver
 - hablar un poco de lo que aprendimos en las clases de merlino
 -Construir un juego en 3 meses con metodologias agiles
 ==================
+-Como aprendimos python?
 -Hablar de como fue el proceso usandolas.
--Surgieron problemas? fue organizado? (nos olvidabamos de actualizar la tabla)
+-Surgieron problemas? fue organizado? (nos olvidabamos de actualizar la tabla) --> ESTO IRIA MEJOR EN CONCLUSION?
 
 
 + CONCLUSION
