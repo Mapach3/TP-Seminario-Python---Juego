@@ -1,0 +1,88 @@
+
+
+============================= SEMINARIO DE LENGUAJES ========================================
+				       PAPER 
+
++SHORT PAPER: HASTA 7 HOJAS.
++LONG PAPER : HASTA 14 HOJAS.
+
+
+
+
+
++ TITULO: Se pone al final
+
+
+
+
++AUTORES DEL PROYECTO
+-Bombara, Martin Nicolas.
+-Contento, Guido Ezequiel.
+-D'Alessandro, Stefano Tomas.
+-Montaña, Ignacio.
+
+INDICE
+
+
+
++ ABSTRACT : Resumen de 150 palabras del trabajo ((--english and spanish--))
+- Hablar de Metodologias Agiles y Controlador de Versiones
+y como lo aplicamos a la creacion de un simple juego de rol.
+
+
+
++KEYWORDS: Palabras clave con las que rotulamos el TP (8 - 15) ((--english and spanish--))
+Python, Pygame, Libreria,Metodologias Agiles, Kanban, Scrum, Backlot, GIThub, Controlador de Versiones, RPG, Jefe Final
+Python, Pygame, Library, Agile Methodologies, Kanban, Scrum, Backlot,GIThub, Version Control System, RPG, Final Boss
+
+
+
++INTRODUCCION
+-Parrafo introductorio
+-Explicar las metodologias agiles
+-Explicar python y sus caracteristicas y porque fue elegido como lenguaje
+
+
+
++ ESTADO DE LA CUESTION (Como llegamos a detectar un problema o buscamos hacer lo que hicimos)
+-Las empresas usan metodologias agiles hoy en día para el trabajo de sus proyectos.
+-Son aplicables estas metodologías a un juego de computadora programado desde cero?
+
+
+
+
+
++ PROBLEMA Y SOLUCION
+- que tuvimos que aprender, python pygame etc + lo que puso tincho
+- hablar un poco de lo que aprendimos en las clases de merlino
+-Construir un juego en 3 meses con metodologias agiles
+==================
+-Hablar de como fue el proceso usandolas.
+-Surgieron problemas? fue organizado? (nos olvidabamos de actualizar la tabla)
+
+
++ CONCLUSION
+-Se logró terminar el proyecto?
+-Las metodologias aplicadas sirvieron para que este pueda ser terminado mas rapido o
+significaron un estorbo en la realizacion del proyecto?
+
+
+
+
+
++ FUTURA LINEA DE INVESTIGACION ("Donde una tesis se hace a prueba de balas")
+-Proyectos mas grandes? Juegos AAA for example.
+-Utilizar otras metodologias de trabajo? Facilitarian el proyecto
+
++AGRADECIMIENTOS
+-A Hoppe, a Marcelo, a la produccion y a ignacio por poner casa siempre.
+
+
+
+
++REFERENCIAS: 
+-Donde se bajo Pygame
+-Version de Python Usada	    	
+-Texto o sitios usados para entender pygame
+-Clases de merlino para lo de kanban scrum blablabla
+
