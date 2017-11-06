@@ -1,0 +1,3 @@
+Comenzamos a pulir el codigo final del juego, con los sprites finales que ibamos a utilizar
+y empezamos a escribir el paper que acompañará la entrega final. Definimos que una vez que cada uno termine
+con su actividad asignada, nos ayudariamos entre nosotros a terminar lo que falte. Fecha 4/11/2017
