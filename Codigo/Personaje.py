@@ -47,6 +47,10 @@ class Personaje(pygame.sprite.Sprite):
                 self.orientacion = 0
             if vx > 0:
                 self.orientacion = 1
+            if vx == 0 and vy == 0:
+                self.movimiento = 0
+            else:
+                self.movimiento = 1
         self.rect.move_ip(vx*self.velocidad,vy*self.velocidad)
     
     
