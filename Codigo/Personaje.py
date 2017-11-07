@@ -153,17 +153,18 @@ class Times(object):
             respawntimes.update()
 
 def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls):
-    fondo.update(pantalla,vx*personaje.velocidad,vy*personaje.velocidad, personaje)
+    fondo.update(pantalla,vx,vy,personaje)
     colision=False
     for wall in listaWalls:
-            wall.move_ip(-vx,-vy)
+            if personaje.moviendo:
+                wall.move_ip(-vx,-vy)
     for wall in listaWalls:
             if wall.colliderect(personaje.rect):
                 vx,vy=-vx,-vy
                 colision=True
                 break    
     if colision==True:
-        fondo.update(pantalla,vx*personaje.velocidad,vy*personaje.velocidad,personaje)
+        fondo.update(pantalla,vx,vy,personaje)
         for wall in listaWalls:
             wall.move_ip(-vx,-vy)
     personaje.update(pantalla, t, False, suceso, vx, vy,listaFlechas)
@@ -178,11 +179,11 @@ def main():
     pantalla=pygame.display.set_mode((800,600))
     salir=False
     reloj = pygame.time.Clock()
-    fondo = Fondo(pygame.image.load("Mapa1Final.png"))
+    fondo = Fondo(pygame.image.load("Mapa1Final.png"),0,0)
     cursor = Cursor()
     listaFlechas = []
     listaWalls=[]
-    listaWalls=[pygame.Rect(50,90,3,252)]
+    listaWalls=[pygame.Rect(255,290,3,1200)]
     personaje=Personaje(ListaAnimacionesProtagonista)
 
     vx,vy=0,0
@@ -204,16 +205,16 @@ def main():
                         return False
                     if event.key == pygame.K_LEFT:
                         leftsigueapretada = True
-                        vx = -1
+                        vx = -personaje.velocidad
                     if event.key == pygame.K_RIGHT:
                         rightsigueapretada = True
-                        vx = 1
+                        vx = personaje.velocidad
                     if event.key == pygame.K_UP:
                         upsigueapretada = True
-                        vy = -1
+                        vy = -personaje.velocidad
                     if event.key == pygame.K_DOWN:
                         downsigueapretada = True
-                        vy = 1
+                        vy = personaje.velocidad
                     
                     if event.key == pygame.K_a:
                         suceso = "espadazo"
@@ -232,38 +233,38 @@ def main():
                     if event.key == pygame.K_LEFT:
                         leftsigueapretada = False
                         if rightsigueapretada: 
-                            vx = 1
+                            vx = personaje.velocidad
                         else:
                             vx = 0
                     if event.key == pygame.K_RIGHT:
                         rightsigueapretada = False
                         if leftsigueapretada:
-                            vx = -1
+                            vx = -personaje.velocidad
                         else:
                             vx = 0
                     if event.key == pygame.K_UP:
                         upsigueapretada = False
                         if downsigueapretada:
-                            vy = 1
+                            vy = personaje.velocidad
                         else:
                             vy = 0
                     if event.key == pygame.K_DOWN:
                         downsigueapretada = False
                         if upsigueapretada:
-                            vy = -1
+                            vy = -personaje.velocidad
                         else:
                             vy = 0          
                     
                     
                     
                     
-        
+
         pantalla.fill((0,0,170))
         t.update_times()
         moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls)
         cursor.updatecursor()  
         pygame.display.update()
-        
+        print 
     pygame.quit()
     
 
