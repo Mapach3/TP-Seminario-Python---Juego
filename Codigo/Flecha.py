@@ -45,15 +45,7 @@ class Flecha(pygame.sprite.Sprite):
         #                 if  isinstance(monster,Teleporter):
         #                     monster.teleport()
         #                     self.destroy(lista, jugador)
-        #  
-        #         for shop in listashop:
-        #             if self.rect.colliderect(shop.rect) and jugador.gold>=shop.precio:
-        #                 jugador.gold-=shop.precio
-        #                 shop.comprar(jugador)
-        #                 shop.sound.play()
-        #                 pygame.draw.rect(superficie,(0,255,0),shop.rect)
-        #                 self.destroy(lista,jugador)              
-        #         self.imagen=self.imagenes[self.orientacion][self.imagen_numero]
+        #
     
         superficie.blit(self.imagen,self.rect)
     def destroy(self,lista):
