@@ -1,10 +1,11 @@
 import pygame
 from Flecha import *
 from imagenes import *
+from ImagenesMob import *
+from Enemigo import *
 from __builtin__ import True
 class Personaje(pygame.sprite.Sprite):
     def __init__(self,imagenes):
-
         self.imagenes = imagenes
         self.animacion = self.imagenes[0][0]
         self.imagen = self.animacion[0]
@@ -152,7 +153,7 @@ class Times(object):
         for respawntimes in self.trespawn:
             respawntimes.update()
 
-def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls):
+def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos):
     fondo.update(pantalla,vx,vy,personaje)
     colision=False
     for wall in listaWalls:
@@ -167,7 +168,9 @@ def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,list
         fondo.update(pantalla,vx,vy,personaje)
         for wall in listaWalls:
             wall.move_ip(-vx,-vy)
-    personaje.update(pantalla, t, False, suceso, vx, vy,listaFlechas)
+    for enemigo in listaEnemigos:
+        enemigo.update(pantalla, t, listaEnemigos, personaje, vx, vy, listaFlechas)
+    personaje.update(pantalla, t, False, suceso, vx, vy, listaFlechas)
     for flecha in listaFlechas:
         flecha.update(pantalla,listaFlechas,personaje,vx,vy,t)
     
@@ -185,7 +188,8 @@ def main():
     listaWalls=[]
     listaWalls=[pygame.Rect(255,290,3,1200)]
     personaje=Personaje(ListaAnimacionesProtagonista)
-
+    enemigo1 = Enemigo("mob1", ListaAnimacionesMob1, 100, 100, 0, 100, 50, 3, 3, 30)
+    listaEnemigos = [enemigo1]
     vx,vy=0,0
     t = Times()
     
@@ -261,7 +265,7 @@ def main():
 
         pantalla.fill((0,0,170))
         t.update_times()
-        moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls)
+        moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos)
         cursor.updatecursor()  
         pygame.display.update()
         print 
