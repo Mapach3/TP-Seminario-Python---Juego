@@ -179,11 +179,15 @@ def main():
     pantalla=pygame.display.set_mode((800,600))
     salir=False
     reloj = pygame.time.Clock()
-    fondo = Fondo(pygame.image.load("Mapa1Final.png"),0,0)
+    fondo = Fondo(pygame.image.load("Mapa1Final.png"),0,-0)
     cursor = Cursor()
     listaFlechas = []
     listaWalls=[]
-    listaWalls=[pygame.Rect(255,290,3,1200)]
+    listaWalls=[pygame.Rect(255,290,3,1200),pygame.Rect(256,1533,833,3),
+                pygame.Rect(1090,1344,3,200),pygame.Rect(1087,833,3,325),
+                pygame.Rect(1088,288,3,360),pygame.Rect(269,244,818,3),
+                pygame.Rect(302,332,116,430),pygame.Rect(432,332,43,60),
+                pygame.Rect(292,836,188,170)]
     personaje=Personaje(ListaAnimacionesProtagonista)
 
     vx,vy=0,0
