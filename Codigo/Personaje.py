@@ -1,5 +1,6 @@
 import pygame
 from imagenes import *
+from __builtin__ import True
 class Personaje(pygame.sprite.Sprite):
     def __init__(self,imagenes):
 
@@ -7,16 +8,15 @@ class Personaje(pygame.sprite.Sprite):
         self.animacion = self.imagenes[0][0]
         self.imagen = self.animacion[0]
         self.rect = self.imagen.get_rect()
-        self.rect.height = self.rect.height / 2
         self.rect.top, self.rect.left = (0,0)
 
         #seteo imagenes
-        self.orientacion = 0
+        self.orientacion = 1
         self.movimiento = 0
         self.imagen_actual = 0
 
         #estados
-        self.suceso = "quieto"
+        self.accion = "no atacando"
         self.estaVivo = True
         self.moviendo = False
         self.atacando = False
@@ -38,63 +38,54 @@ class Personaje(pygame.sprite.Sprite):
         self.lvl = 1
 
     def mover(self,vx,vy):
-        self.rect.move_ip(vx*self.velocidad,vy*self.velocidad)
+        self.rect.move_ip(vx,vy)
     
+    def terminoAnimar(self):
+        return self.movimiento == 1 or self.movimiento == 0 or self.imagen_actual == len(self.animacion)-1
     
-    def update(self, superficie, t, subioLvl, suceso,vx,vy):
-        if vx == 0 and vy == 0:
-            self.movimiento = 0
-            self.moviendo = False
-        else:
-            self.moviendo = True
-            self.movimiento = 1
-            if vx < 0: 
-                self.orientacion = 0
-            if vx > 0:
-                self.orientacion = 1
-        if self.hp <= 0:
-            self.estaVivo = False
-        if t.tde8 == 8 and self.subioLvl:
-            self.subioLvl = False
-        if self.exp >= self.expParaSubir:
-            self.subirLvl(subioLvl, t)
-        if suceso == "usar pota":
-            self.usarPota()
-        if suceso == "espadazo":
-            self.movimiento = 2
-            self.moviendo = False
-            self.atacando = True
-        if suceso == "poder":
-            self.movimiento = 3
-            self.moviendo = False
-            self.atacando = True
-        if suceso == "flechazo":
-            self.movimiento = 4
-            self.moviendo = False
-            self.atacando = True
-        if self.estaVivo == False:
-            self.movimiento = 5
-            self.atacando = True
-        if suceso == "es golpeado":
-            self.movimiento = 6
-        if self.moviendo == True and self.atacando == False:
-            self.mover(vx,vy)
-        else:
-            self.movimiento = 0
-        self.animacion = self.imagenes[self.orientacion][self.movimiento]
-        if t.t == 1:
-            self.imagen_actual += 1
+    def animar(self):
+        self.imagen_actual += 1
         if self.imagen_actual >= len(self.animacion):
             self.imagen_actual = 0
-            if self.movimiento != 1:
-                self.atacando = False
+        self.imagen = self.animacion[self.imagen_actual]
+    def update(self, superficie, t, subioLvl, suceso, vx, vy):
+        
+        if self.hp <= 0:
+            self.estaVivo = False
+    
+        if vx < 0:
+            self.orientacion = 0
+        if vx > 0:
+            self.orientacion = 1
+            
+        if self.terminoAnimar():
+            if vx == 0 and vy == 0:
                 self.movimiento = 0
-        self.imagen = self.imagenes[self.orientacion][self.movimiento][self.imagen_actual]
+            else:
+                self.movimiento = 1
+            self.rect = superficie.get_rec
+            self.rect.left = self.rect.width / 2
+            self.rect.top = self.rect.height / 2
+            
+        if suceso == "espadazo":
+            self.movimiento = 2
+            
+        if suceso == "flechazo":
+            self.movimiento = 3
+            
+        if suceso == "poder":
+            self.movimiento = 4
+            
+        self.animacion = self.imagenes[self.orientacion][self.movimiento]
+        
+        if t.tde2 == 2:
+            self.animar()
+            
+        ## Ubicar al personaje en el medio de la pantalla
+
+        
         superficie.blit(self.imagen,self.rect)
-
         
-        
-
     def subirLvl(self, superficie, subioLvl, t):
         self.subioLvl = True
         self.lvl += 1
@@ -120,7 +111,7 @@ class Fondo(pygame.sprite.Sprite):
         self.rect=self.imagen.get_rect()
         self.rect.top,self.rect.left=(x,y)
     def mover(self,vx,vy):
-        self.rect.move_ip(vx*10,vy*10)
+        self.rect.move_ip(vx,vy)
     def update(self,superficie,vx,vy):
         self.mover(-vx, -vy)
         superficie.blit(self.imagen,self.rect)  
@@ -135,6 +126,7 @@ class Cursor(pygame.Rect):
 class Times(object):
     def __init__(self):
         self.t=0
+        self.tde2=0
         self.tde4=0
         self.tde8=0
         self.tde40=0
@@ -143,10 +135,12 @@ class Times(object):
         self.tiempoanterior=0
     def update_times(self):
         self.t+=1
+        self.tde2+=1
         self.tde4+=1
         self.tde8+=1
         self.tde40+=1
         if self.t>1: self.t=0
+        if self.tde2>2: self.tde2=0
         if self.tde4>4: self.tde4=0
         if self.tde8>8: self.tde8=0
         if self.tde40>140: self.tde40=0
@@ -154,17 +148,17 @@ class Times(object):
             respawntimes.update()
 
 def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso):
-    fondo.update(pantalla,vx,vy)
-    personaje.update(pantalla, t, False,suceso,vx,vy)
+    fondo.update(pantalla,vx*personaje.velocidad,vy*personaje.velocidad)
+    personaje.update(pantalla, t, False, suceso, vx, vy)
 
 def main():
     import pygame
-    suceso="unknown"
+    suceso = "no atacando"
     pygame.init()
     pantalla=pygame.display.set_mode((800,600))
     salir=False
     reloj = pygame.time.Clock()
-    fondo = Fondo(pygame.image.load("C:\Python27\Vengeance\Mapa1Final.png"))
+    fondo = Fondo(pygame.image.load("Mapa1Final.png"))
     cursor = Cursor()
 
     personaje=Personaje(ListaAnimacionesProtagonista)
@@ -177,11 +171,13 @@ def main():
     pantalla.blit(personaje.imagen,personaje.rect)
     while salir!=True:#LOOP PRINCIPAL
         reloj.tick(28)
+        suceso = "no atacando"
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 salir=True
             else:                                                                                    
                 if event.type == pygame.KEYDOWN:
+                    
                     if event.key == pygame.K_ESCAPE:
                         return False
                     if event.key == pygame.K_LEFT:
@@ -196,14 +192,18 @@ def main():
                     if event.key == pygame.K_DOWN:
                         downsigueapretada = True
                         vy = 1
+                    
                     if event.key == pygame.K_a:
-                        suceso="espadazo"
+                        suceso = "espadazo"
+                        
                     if event.key == pygame.K_s:
-                        suceso="flechazo"
+                        suceso = "flechazo"
+                        
                     if event.key == pygame.K_d:
-                        suceso="poder"
+                        suceso = "poder"
+                        
                     if event.key == pygame.K_q:
-                        suceso="usar pota"
+                        personaje.usarPota()
                     
                         
                 if event.type == pygame.KEYUP:
@@ -230,13 +230,14 @@ def main():
                         if upsigueapretada:
                             vy = -1
                         else:
-                            vy=0                    
+                            vy = 0          
+                    
+                    
+                    
                     
         pantalla.fill((0,0,170))
         t.update_times()
         moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso)
-        if personaje.movimiento == 0:
-            suceso = "quieto"
         cursor.updatecursor()  
         pygame.display.update()
         
