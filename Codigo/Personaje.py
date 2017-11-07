@@ -187,7 +187,13 @@ def main():
                 pygame.Rect(1090,1344,3,200),pygame.Rect(1087,833,3,325),
                 pygame.Rect(1088,288,3,360),pygame.Rect(269,244,818,3),
                 pygame.Rect(302,332,116,430),pygame.Rect(432,332,43,60),
-                pygame.Rect(292,836,188,170)]
+                pygame.Rect(292,836,188,170),pygame.Rect(305,1100,114,80),
+                pygame.Rect(370,1220,26,80),pygame.Rect(299,1389,122,80),
+                pygame.Rect(495,1396,80,95),pygame.Rect(578,293,190,160),
+                pygame.Rect(873,332,182,60),pygame.Rect(865,875,190,289),
+                pygame.Rect(938,1387,119,60),pygame.Rect(1056,1346,219,3),
+                pygame.Rect(1056,1150,221,3),pygame.Rect(1088,832,191,3),
+                pygame.Rect(1088,640,192,3)]
     personaje=Personaje(ListaAnimacionesProtagonista)
 
     vx,vy=0,0
