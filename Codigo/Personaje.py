@@ -1,4 +1,5 @@
 import pygame
+from Flecha import *
 from imagenes import *
 from __builtin__ import True
 class Personaje(pygame.sprite.Sprite):
@@ -48,7 +49,7 @@ class Personaje(pygame.sprite.Sprite):
         if self.imagen_actual >= len(self.animacion):
             self.imagen_actual = 0
         self.imagen = self.animacion[self.imagen_actual]
-    def update(self, superficie, t, subioLvl, suceso, vx, vy):
+    def update(self, superficie, t, subioLvl, suceso, vx, vy, listaFlechas):
         
         if self.hp <= 0:
             self.estaVivo = False
@@ -69,17 +70,19 @@ class Personaje(pygame.sprite.Sprite):
                 self.movimiento = 2
             
             if suceso == "flechazo":
-                self.movimiento = 3
+                self.movimiento = 4
+                flecha = Flecha(self)
+                listaFlechas.append(flecha)
             
             if suceso == "poder":
-                self.movimiento = 4
+                self.movimiento = 3
             
             if self.movimiento != 1:
                 self.moviendo = False
             
         self.animacion = self.imagenes[self.orientacion][self.movimiento]
         
-        if t.tde2 == 2:
+        if t.t == 1:
             self.animar()
             
         ## Ubicar al personaje en el medio de la pantalla
@@ -90,7 +93,7 @@ class Personaje(pygame.sprite.Sprite):
         self.subioLvl = True
         self.lvl += 1
         t.tde8 = 0
-        self.exp = 0
+        self.exp -= self.expParaSubir 
         self.expParaSubir += self.expParaSubir/4
         ##subirLvl.play()
         self.danio += self.danio/4
@@ -98,6 +101,7 @@ class Personaje(pygame.sprite.Sprite):
 
     def usarPota(self):
         if self.potas > 0:
+            ##usarPota.play()
             self.potas -= 1
             curacion = self.hpmax / 4
             self.hp += curacion
@@ -148,9 +152,11 @@ class Times(object):
         for respawntimes in self.trespawn:
             respawntimes.update()
 
-def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso):
+def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas):
     fondo.update(pantalla,vx*personaje.velocidad,vy*personaje.velocidad, personaje)
-    personaje.update(pantalla, t, False, suceso, vx, vy)
+    personaje.update(pantalla, t, False, suceso, vx, vy,listaFlechas)
+    for flecha in listaFlechas:
+        flecha.update(pantalla,listaFlechas,personaje,vx,vy,t)
 
 def main():
     import pygame
@@ -161,7 +167,7 @@ def main():
     reloj = pygame.time.Clock()
     fondo = Fondo(pygame.image.load("Mapa1Final.png"))
     cursor = Cursor()
-
+    listaFlechas = []
     personaje=Personaje(ListaAnimacionesProtagonista)
 
     vx,vy=0,0
@@ -238,7 +244,7 @@ def main():
                     
         pantalla.fill((0,0,170))
         t.update_times()
-        moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso)
+        moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas)
         cursor.updatecursor()  
         pygame.display.update()
         
