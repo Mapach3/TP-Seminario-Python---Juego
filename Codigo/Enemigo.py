@@ -1,3 +1,6 @@
+import pygame
+pygame.init()
+
 class Enemigo(pygame.sprite.Sprite):
     def __init__(self,tipo,imagenes,left,top,orientacion,expDrop,hpMax,velocidad,danio,distanciaMax):
         self.tipo = tipo
@@ -42,7 +45,7 @@ class Enemigo(pygame.sprite.Sprite):
             self.imagen_actual = 0
         self.imagen = self.animacion[self.imagen_actual]
         
-    def update(self, superficie, t, listaEnemigos, personaje, vx, vy):
+    def update(self, superficie, t, listaEnemigos, personaje, vx, vy, listaFlechas):
         
         if self.hp <= 0:
             self.estaVivo = False
@@ -50,7 +53,7 @@ class Enemigo(pygame.sprite.Sprite):
         if self.estaVivo == False:
             self.destroy(listaEnemigos)
         else:
-            if self.distancia <= distanciaMax:
+            if self.distancia <= self.distanciaMax:
                 if self.orientacion == 0:
                     self.vx = -self.velocidad
                 else:
@@ -62,7 +65,7 @@ class Enemigo(pygame.sprite.Sprite):
                     self.orientacion = 0
                 
             if self.terminoAnimar():
-                if vx == 0 and vy == 0:
+                if self.vx == 0 and self.vy == 0:
                     self.movimiento = 0
                 else:
                     self.movimiento = 1
@@ -85,8 +88,6 @@ class Enemigo(pygame.sprite.Sprite):
             
             if t.t == 1:
                 self.animar()
-                
-            ## Ubicar al personaje en el medio de la pantalla
     
             superficie.blit(self.imagen,self.rect)
     
