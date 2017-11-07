@@ -40,7 +40,7 @@ class Personaje(pygame.sprite.Sprite):
 
     def mover(self,vx,vy):
         self.rect.move_ip(vx,vy)
-    
+        
     def terminoAnimar(self):
         return self.movimiento == 1 or self.movimiento == 0 or self.imagen_actual == len(self.animacion)-1
     
@@ -152,11 +152,24 @@ class Times(object):
         for respawntimes in self.trespawn:
             respawntimes.update()
 
-def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas):
+def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls):
     fondo.update(pantalla,vx*personaje.velocidad,vy*personaje.velocidad, personaje)
+    colision=False
+    for wall in listaWalls:
+            wall.move_ip(-vx,-vy)
+    for wall in listaWalls:
+            if wall.colliderect(personaje.rect):
+                vx,vy=-vx,-vy
+                colision=True
+                break    
+    if colision==True:
+        fondo.update(pantalla,vx*personaje.velocidad,vy*personaje.velocidad,personaje)
+        for wall in listaWalls:
+            wall.move_ip(-vx,-vy)
     personaje.update(pantalla, t, False, suceso, vx, vy,listaFlechas)
     for flecha in listaFlechas:
         flecha.update(pantalla,listaFlechas,personaje,vx,vy,t)
+    
 
 def main():
     import pygame
@@ -168,6 +181,8 @@ def main():
     fondo = Fondo(pygame.image.load("Mapa1Final.png"))
     cursor = Cursor()
     listaFlechas = []
+    listaWalls=[]
+    listaWalls=[pygame.Rect(50,90,3,252)]
     personaje=Personaje(ListaAnimacionesProtagonista)
 
     vx,vy=0,0
@@ -242,9 +257,10 @@ def main():
                     
                     
                     
+        
         pantalla.fill((0,0,170))
         t.update_times()
-        moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas)
+        moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls)
         cursor.updatecursor()  
         pygame.display.update()
         
