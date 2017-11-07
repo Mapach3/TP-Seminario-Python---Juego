@@ -8,7 +8,7 @@ class Personaje(pygame.sprite.Sprite):
         self.animacion = self.imagenes[0][0]
         self.imagen = self.animacion[0]
         self.rect = self.imagen.get_rect()
-        self.rect.top, self.rect.left = (0,0)
+        self.rect.left, self.rect.top = (350,250)
 
         #seteo imagenes
         self.orientacion = 1
@@ -63,18 +63,19 @@ class Personaje(pygame.sprite.Sprite):
                 self.movimiento = 0
             else:
                 self.movimiento = 1
-            self.rect = superficie.get_rec
-            self.rect.left = self.rect.width / 2
-            self.rect.top = self.rect.height / 2
+                self.moviendo = True
             
-        if suceso == "espadazo":
-            self.movimiento = 2
+            if suceso == "espadazo":
+                self.movimiento = 2
             
-        if suceso == "flechazo":
-            self.movimiento = 3
+            if suceso == "flechazo":
+                self.movimiento = 3
             
-        if suceso == "poder":
-            self.movimiento = 4
+            if suceso == "poder":
+                self.movimiento = 4
+            
+            if self.movimiento != 1:
+                self.moviendo = False
             
         self.animacion = self.imagenes[self.orientacion][self.movimiento]
         
@@ -83,7 +84,6 @@ class Personaje(pygame.sprite.Sprite):
             
         ## Ubicar al personaje en el medio de la pantalla
 
-        
         superficie.blit(self.imagen,self.rect)
         
     def subirLvl(self, superficie, subioLvl, t):
@@ -112,8 +112,9 @@ class Fondo(pygame.sprite.Sprite):
         self.rect.top,self.rect.left=(x,y)
     def mover(self,vx,vy):
         self.rect.move_ip(vx,vy)
-    def update(self,superficie,vx,vy):
-        self.mover(-vx, -vy)
+    def update(self,superficie,vx,vy,personaje):
+        if personaje.moviendo:
+            self.mover(-vx, -vy)
         superficie.blit(self.imagen,self.rect)  
               
 class Cursor(pygame.Rect):
@@ -148,7 +149,7 @@ class Times(object):
             respawntimes.update()
 
 def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso):
-    fondo.update(pantalla,vx*personaje.velocidad,vy*personaje.velocidad)
+    fondo.update(pantalla,vx*personaje.velocidad,vy*personaje.velocidad, personaje)
     personaje.update(pantalla, t, False, suceso, vx, vy)
 
 def main():
