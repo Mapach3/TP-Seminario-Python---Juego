@@ -8,7 +8,7 @@ class Fondo(pygame.sprite.Sprite):
     import pygame
     
     def __init__(self):
-        self.imagen=pygame.image.load("Vengeance\Mapa1Final.png").convert_alpha()
+        self.imagen=pygame.image.load("Mapa1Final.png").convert_alpha()
         self.rect=self.imagen.get_rect()
     def update(self,pantalla,vx,vy):
         self.rect.move_ip(-vx,-vy)
