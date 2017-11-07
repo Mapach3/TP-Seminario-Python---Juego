@@ -106,8 +106,8 @@ class Personaje(pygame.sprite.Sprite):
             curacion = self.hpmax / 4
             self.hp += curacion
             usarPota.play()
-            if self.hp > self.hpmax:
-                self.hp = self.hpmax
+            if self.hp > self.hpMax:
+                self.hp = self.hpMax
                 
 class Fondo(pygame.sprite.Sprite):
     def __init__(self,imagen,x=-250,y=-1370):
