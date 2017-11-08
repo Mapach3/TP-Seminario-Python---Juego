@@ -39,6 +39,7 @@ def main():
     salir=False
     reloj = pygame.time.Clock()
     fondo = Fondo(pygame.image.load("Mapa1Final.png"),0,-0)
+    gameover=pygame.image.load("GameOver.png")
     listaFlechas = []
     listaWalls=[]
     listaEnemigos=[]
@@ -159,7 +160,7 @@ def main():
         pantalla.fill((0,0,170))
         if t.gameover == True:
             gameoversonido.play()
-            pantalla.fill((0,0,0))
+            pantalla.blit(gameover,(0,0))
         else:
             t.update_times()
             moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos)
