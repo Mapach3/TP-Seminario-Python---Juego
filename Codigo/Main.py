@@ -157,8 +157,11 @@ def main():
                     
 
         pantalla.fill((0,0,170))
-        t.update_times()
-        moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos)
+        if t.gameover == True:
+            pantalla.fill((0,0,0))
+        else:
+            t.update_times()
+            moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos)
         pygame.display.update()
     pygame.quit()
     

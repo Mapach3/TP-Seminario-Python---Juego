@@ -57,7 +57,7 @@ class Personaje(pygame.sprite.Sprite):
         self.imagen = self.animacion[self.imagen_actual]
     def update(self, superficie, t, subioLvl, suceso, vx, vy, listaFlechas,colision):
         
-        if self.movimiento == 6 and self.imagen_actual == 4:
+        if self.movimiento == 5 and self.imagen_actual == 6:
             t.gameover = True
         if self.hp <= 0:
             self.estaVivo = False

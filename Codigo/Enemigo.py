@@ -84,8 +84,12 @@ class Enemigo(pygame.sprite.Sprite):
             
         self.animacion = self.imagenes[self.orientacion][self.movimiento]
         
-        if t.t == 1:
-            self.animar()
+        if self.movimiento == 4:
+            if t.tde8 == 4:
+                self.animar()
+        else:
+            if t.t == 1:
+                self.animar()
         
         if self.hp <= 0 and self.imagen_actual == 6:
             self.destroy(listaEnemigos)
