@@ -89,6 +89,7 @@ class Enemigo(pygame.sprite.Sprite):
                 self.moviendo = False 
             if self.esta_golpeando:
                 personaje.hp -= self.danio
+                personaje.movimiento = 6
                 self.movimiento = 2
                 self.siguiendo = True
             if self.poderBoss1 == True:

@@ -114,11 +114,8 @@ def main():
                     if event.key == pygame.K_a:
                         suceso = "espadazo"
 
-                        
-                        
                     if event.key == pygame.K_s:
                         suceso = "flechazo"
-
                         
                     if event.key == pygame.K_d:
                         suceso = "poder"
