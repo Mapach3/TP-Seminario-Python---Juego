@@ -2,6 +2,7 @@ import pygame
 from Flecha import *
 from imagenes import *
 from ImagenesMob import *
+from sonido import *
 from Enemigo import *
 from __builtin__ import True
 class Personaje(pygame.sprite.Sprite):
@@ -232,12 +233,18 @@ def main():
                     
                     if event.key == pygame.K_a:
                         suceso = "espadazo"
+                        ataquesonido.play()
+                        ataquesonido.set_volume(0.2)
+                        
                         
                     if event.key == pygame.K_s:
                         suceso = "flechazo"
+                        flechasonido.play()
+                        flechasonido.set_volume(0.14)
                         
                     if event.key == pygame.K_d:
                         suceso = "poder"
+                        podersonido.play()
                         
                     if event.key == pygame.K_q:
                         personaje.usarPota()
