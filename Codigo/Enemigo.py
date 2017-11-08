@@ -23,6 +23,9 @@ class Enemigo(pygame.sprite.Sprite):
         self.atacando = False
         self.vivo = True
         self.siguiendo = False
+        self.es_golpeado = False
+        self.esta_golpeando = False
+        
         #drop
         self.expDrop = expDrop
 
@@ -50,27 +53,40 @@ class Enemigo(pygame.sprite.Sprite):
         
         if self.siguiendo:
             self.seguir(personaje)
-        
-        self.mover(-vx + self.vx, -vy + self.vy)
-        
+            
+        if self.moviendo:
+            self.mover(-vx + self.vx, -vy + self.vy)
+        else:
+            self.mover(-vx,-vy)
+
         if self.vx < 0: self.orientacion = 1
         if self.vx > 0: self.orientacion = 0
         
+        self.es_golpeado = False
+        self.esta_golpeando = False
+        
+        if self.rect.colliderect(personaje.rect):
+            if personaje.movimiento == 2:
+                self.es_golpeado = True
+            else:
+                self.esta_golpeando = True
         
         if self.terminoAnimar():
             if self.vx == 0 and self.vy == 0:
                 self.movimiento = 0
+                self.moviendo = False
             else:
                 self.movimiento = 1
                 self.moviendo = True
-            if self.rect.colliderect(personaje.rect):
-                if personaje.movimiento == 2:
-                    self.movimiento = 4
-                    self.hp -= personaje.danio * 10
-                else:
-                    personaje.hp -= self.danio
-                    self.movimiento = 2
-                    self.siguiendo = True
+                
+            if self.es_golpeado:  
+                self.movimiento = 4
+                self.hp -= personaje.danio
+                self.moviendo = False 
+            if self.esta_golpeando:
+                personaje.hp -= self.danio
+                self.movimiento = 2
+                self.siguiendo = True
    
             for flecha in listaFlechas:
                 if self.rect.colliderect(flecha.rect):
@@ -79,20 +95,25 @@ class Enemigo(pygame.sprite.Sprite):
                     self.siguiendo = True
                     self.movimiento = 4
 
-                if self.estaVivo == False:
-                    self.movimiento = 1
-            
+            if self.estaVivo == False:
+                self.movimiento = 1
+            if self.hp <= 0:
+                self.movimiento = 3
+                    
+ 
         self.animacion = self.imagenes[self.orientacion][self.movimiento]
         
         if self.movimiento == 4:
-            if t.tde8 == 4:
+            if t.tde8 == 8:
                 self.animar()
         else:
             if t.t == 1:
                 self.animar()
-        
-        if self.hp <= 0 and self.imagen_actual == 6:
-            self.destroy(listaEnemigos)
+                
+        if self.hp <= 0 and self.movimiento == 3 and self.imagen_actual == 3:
+            personaje.hp += self.hpMax/10.0
+            self.destroy(listaEnemigos)  
+            
         superficie.blit(self.imagen,self.rect)
     
     def seguir(self,personaje):

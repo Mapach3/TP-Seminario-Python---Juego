@@ -77,8 +77,8 @@ def main():
                 pygame.Rect(5440,927,63,31),pygame.Rect(5439,1056,63,31),
                 pygame.Rect(5408,1088,96,31)]
     personaje = Personaje.Personaje()
-    enemigo1 = Enemigo("mob1", ListaAnimacionesMob1, 300, 300, 0, 100, 100, 2, 2, 10)
-    enemigo2 = Enemigo("mob1", ListaAnimacionesMob1, 400, 400, 0, 100, 100, 2, 2, 10)
+    enemigo1 = Enemigo("mob1", ListaAnimacionesMob1, 800, 600, 0, 100, 50, 2, 2, 10)
+    enemigo2 = Enemigo("mob1", ListaAnimacionesMob1, 1000, 1200, 0, 100, 50, 2, 2, 10)
     listaEnemigos = [enemigo1,enemigo2]
     vx,vy=0,0
     t = Times()
@@ -158,6 +158,7 @@ def main():
 
         pantalla.fill((0,0,170))
         if t.gameover == True:
+            gameoversonido.play()
             pantalla.fill((0,0,0))
         else:
             t.update_times()

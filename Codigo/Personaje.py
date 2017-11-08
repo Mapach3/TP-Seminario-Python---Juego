@@ -41,7 +41,7 @@ class Personaje(pygame.sprite.Sprite):
         self.exp = 0
         self.expParaSubir = 100
         self.velocidad = 5
-        self.danio = 5
+        self.danio = 10
         self.lvl = 1
 
     def mover(self,vx,vy):
