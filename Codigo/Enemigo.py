@@ -25,6 +25,7 @@ class Enemigo(pygame.sprite.Sprite):
         self.siguiendo = False
         self.es_golpeado = False
         self.esta_golpeando = False
+        self.poderBoss1 = False
         
         #drop
         self.expDrop = expDrop
@@ -53,11 +54,14 @@ class Enemigo(pygame.sprite.Sprite):
         
         if self.siguiendo:
             self.seguir(personaje)
-            
-        if self.moviendo:
-            self.mover(-vx + self.vx, -vy + self.vy)
+        
+        if self.poderBoss1 == True:
+            self.mover(-vx + self.vx*10, -vy + self.vy*10)
         else:
-            self.mover(-vx,-vy)
+            if self.moviendo:
+                self.mover(self.vx , self.vy)
+            if personaje.moviendo:
+                self.mover(-vx,-vy)
 
         if self.vx < 0: self.orientacion = 1
         if self.vx > 0: self.orientacion = 0
@@ -87,6 +91,9 @@ class Enemigo(pygame.sprite.Sprite):
                 personaje.hp -= self.danio
                 self.movimiento = 2
                 self.siguiendo = True
+            if self.poderBoss1 == True:
+                self.movimiento = 2
+                ##poderBoss1.play()
    
             for flecha in listaFlechas:
                 if self.rect.colliderect(flecha.rect):
@@ -94,7 +101,7 @@ class Enemigo(pygame.sprite.Sprite):
                     self.hp -= flecha.dano
                     self.siguiendo = True
                     self.movimiento = 4
-
+            
             if self.estaVivo == False:
                 self.movimiento = 1
             if self.hp <= 0:
@@ -102,6 +109,16 @@ class Enemigo(pygame.sprite.Sprite):
                     
  
         self.animacion = self.imagenes[self.orientacion][self.movimiento]
+        
+        if self.tipo == "Boss 1":
+            if t.tde80 == 80 and self.poderBoss1 == False:
+                self.poderBoss1 = True
+            if t.tde40 == 40 and self.poderBoss1 == True:
+                self.poderBoss1 = False
+        
+        if self.tipo == "Boss 2":
+            if t.tde80 == 80:
+                self.poderBoss2()
         
         if self.movimiento == 4:
             if t.tde8 == 8:
@@ -125,7 +142,10 @@ class Enemigo(pygame.sprite.Sprite):
             self.vy = self.velocidad
         else:
             self.vy = -self.velocidad
-        
+            
+    def poderBoss2(self):
+        pass
+     
     def destroy(self,lista):
         if self in lista:
             lista.remove(self)
