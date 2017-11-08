@@ -66,6 +66,10 @@ class Enemigo(pygame.sprite.Sprite):
         if self.vx < 0: self.orientacion = 1
         if self.vx > 0: self.orientacion = 0
         
+        if self.tipo == "Boss 1":
+            if self.vx < 0: self.orientacion = 0
+            if self.vx > 0: self.orientacion = 1
+        
         self.es_golpeado = False
         self.esta_golpeando = False
         
@@ -93,7 +97,7 @@ class Enemigo(pygame.sprite.Sprite):
                 self.movimiento = 2
                 self.siguiendo = True
             if self.poderBoss1 == True:
-                self.movimiento = 2
+                self.movimiento = 5
                 ##poderBoss1.play()
    
             for flecha in listaFlechas:
@@ -129,6 +133,11 @@ class Enemigo(pygame.sprite.Sprite):
                 self.animar()
                 
         if self.hp <= 0 and self.movimiento == 3 and self.imagen_actual == 3:
+            personaje.hp += self.hpMax/10.0
+            self.destroy(listaEnemigos)
+            
+        
+        if self.hp <= 0 and self.movimiento == 3 and self.imagen_actual == 2 and self.tipo == "Boss 1":
             personaje.hp += self.hpMax/10.0
             self.destroy(listaEnemigos)  
             

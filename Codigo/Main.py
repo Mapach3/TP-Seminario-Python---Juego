@@ -3,6 +3,7 @@ from Personaje import *
 from Times import *
 from Fondo import *
 from imagenes import *
+from ImagenesJefe import ListaAnimacionesJefe
 
 def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos):
     fondo.update(pantalla,vx,vy,personaje)
@@ -79,7 +80,7 @@ def main():
                 pygame.Rect(5408,1088,96,31)]
     personaje = Personaje.Personaje()
     enemigo1 = Enemigo("mob1", ListaAnimacionesMob1, 800, 600, 0, 100, 50, 2, 2, 10)
-    enemigo2 = Enemigo("Boss 1", ListaAnimacionesMob1, 1000, 1200, 0, 100, 50, 2, 2, 10)
+    enemigo2 = Enemigo("Boss 1", ListaAnimacionesJefe, 1000, 1200, 0, 100, 50, 2, 2, 10)
     listaEnemigos = [enemigo1,enemigo2]
     vx,vy=0,0
     t = Times()
