@@ -84,14 +84,17 @@ class Personaje(pygame.sprite.Sprite):
             
             if suceso == "flechazo":
                 self.movimiento = 4
-                flecha = Flecha(self)
+                flecha = Flecha(self,"flecha")
                 listaFlechas.append(flecha)
                 flechasonido.play()
                 flechasonido.set_volume(0.14)
             
             if suceso == "poder":
-                self.movimiento = 3
-                podersonido.play()
+                if self.puedeTirarPoder(listaFlechas):
+                    self.movimiento = 3
+                    flecha = Flecha(self,"poder")
+                    listaFlechas.append(flecha)
+                    podersonido.play()
             
             if suceso == "furia" and self.kills >= self.killsToFuria:
                 ##furiasonido.play()
@@ -119,7 +122,13 @@ class Personaje(pygame.sprite.Sprite):
         ## Ubicar al personaje en el medio de la pantalla
 
         superficie.blit(self.imagen,self.rect)
-        
+    
+    def puedeTirarPoder(self,listaFlechas):
+        for proyectil in listaFlechas:
+            if proyectil.tipo == "poder":
+                return False
+        return True
+    
     def subirLvl(self, superficie, subioLvl, t):
         self.subioLvl = True
         self.lvl += 1

@@ -8,6 +8,9 @@ pygame.display.set_mode((800,600))
 imgFlechaIzq = pygame.image.load("Personaje\Izquierda\ProyectilArco.png").convert_alpha()
 imgFlechaDer = pygame.image.load("Personaje\Derecha\ProyectilArco.png").convert_alpha()
 
+imgBolaIzq = pygame.image.load("Personaje\Izquierda\ProyectilPoder.png").convert_alpha()
+imgBolaDer = pygame.image.load("Personaje\Derecha\ProyectilPoder.png").convert_alpha()
+
 imagen1=pygame.image.load("Personaje\Derecha\move1.png").convert_alpha()
 imagen2=pygame.image.load("Personaje\Derecha\move2.png").convert_alpha()
 imagen3=pygame.image.load("Personaje\Derecha\move3.png").convert_alpha()

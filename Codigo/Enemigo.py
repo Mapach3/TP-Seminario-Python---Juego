@@ -102,8 +102,11 @@ class Enemigo(pygame.sprite.Sprite):
    
             for flecha in listaFlechas:
                 if self.rect.colliderect(flecha.rect):
-                    flecha.destroy(listaFlechas)
-                    self.hp -= flecha.dano
+                    if flecha.tipo == "flecha":
+                        flecha.destroy(listaFlechas)
+                        self.hp -= flecha.dano
+                    else:
+                        self.hp -= flecha.dano*1.5
                     self.siguiendo = True
                     self.movimiento = 4
             

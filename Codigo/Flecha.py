@@ -1,14 +1,22 @@
 import pygame
-from imagenes import *
+from imagenes import imgBolaDer,imgBolaIzq,imgFlechaDer,imgFlechaIzq
+
 pygame.init()
 
 class Flecha(pygame.sprite.Sprite):
-    def __init__(self,personaje):
+    def __init__(self,personaje,tipo):
+        self.tipo = tipo
         self.lanzo = False
-        self.imagenes = [imgFlechaIzq,imgFlechaDer]
+        if self.tipo == "flecha":
+            self.imagenes = [imgFlechaIzq,imgFlechaDer]
+        else:
+            self.imagenes = [imgBolaIzq,imgBolaDer]
         self.imagen = self.imagenes[personaje.orientacion]
         self.rect=self.imagen.get_rect() 
-        self.pos_comienzo = [[0,-20],[0,-20]] ## La posicion x,y del comienzo del flechazo para la izquierda y la derecha         
+        if self.tipo == "flecha":
+            self.pos_comienzo = [[0,-20],[0,-20]] ## La posicion x,y del comienzo del flechazo para la izquierda y la derecha         
+        else:
+            self.pos_comienzo = [[0,0],[0,0]]
         self.orientacion = personaje.orientacion
         self.rect.top = personaje.rect.top + self.pos_comienzo[self.orientacion][1]
         self.rect.left = personaje.rect.left + self.pos_comienzo[self.orientacion][0]
