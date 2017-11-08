@@ -30,7 +30,8 @@ class Personaje(pygame.sprite.Sprite):
         self.vivo = True
         self.subioLvl = False
         self.tienePotas = True
-
+        self.esta_furiozo = False
+        
         #inventario
         self.oro = 0
         self.potas = 0
@@ -43,6 +44,8 @@ class Personaje(pygame.sprite.Sprite):
         self.velocidad = 5
         self.danio = 10
         self.lvl = 1
+        self.kills = 0
+        self.killsToFuria = 1
 
     def mover(self,vx,vy):
         self.rect.move_ip(vx,vy)
@@ -89,7 +92,19 @@ class Personaje(pygame.sprite.Sprite):
             if suceso == "poder":
                 self.movimiento = 3
                 podersonido.play()
+            
+            if suceso == "furia" and self.kills >= self.killsToFuria:
+                ##furiasonido.play()
+                podersonido.play()
+                self.esta_furiozo = True
+                self.kills = 0
+                self.danio = self.danio * 2
                 
+            if t.tde200 == 200 and self.esta_furiozo == True:
+                self.esta_furiozo = False
+                self.danio = self.danio / 2
+                
+            
             if self.estaVivo == False:
                 self.movimiento = 5
                 

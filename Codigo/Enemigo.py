@@ -56,7 +56,7 @@ class Enemigo(pygame.sprite.Sprite):
             self.seguir(personaje)
         
         if self.poderBoss1 == True:
-            self.mover(-vx + self.vx*10, -vy + self.vy*10)
+            self.mover(-vx + self.vx*7, -vy + self.vy*7)
         else:
             if self.moviendo:
                 self.mover(self.vx , self.vy)
@@ -66,7 +66,7 @@ class Enemigo(pygame.sprite.Sprite):
         if self.vx < 0: self.orientacion = 1
         if self.vx > 0: self.orientacion = 0
         
-        if self.tipo == "Boss 1":
+        if self.tipo == "Mini Jefe":
             if self.vx < 0: self.orientacion = 0
             if self.vx > 0: self.orientacion = 1
         
@@ -97,7 +97,7 @@ class Enemigo(pygame.sprite.Sprite):
                 self.movimiento = 2
                 self.siguiendo = True
             if self.poderBoss1 == True:
-                self.movimiento = 5
+                self.movimiento = 2
                 ##poderBoss1.play()
    
             for flecha in listaFlechas:
@@ -115,7 +115,7 @@ class Enemigo(pygame.sprite.Sprite):
  
         self.animacion = self.imagenes[self.orientacion][self.movimiento]
         
-        if self.tipo == "Boss 1":
+        if self.tipo == "Mini Jefe":
             if t.tde80 == 80 and self.poderBoss1 == False:
                 self.poderBoss1 = True
             if t.tde40 == 40 and self.poderBoss1 == True:
@@ -134,6 +134,8 @@ class Enemigo(pygame.sprite.Sprite):
                 
         if self.hp <= 0 and self.movimiento == 3 and self.imagen_actual == 3:
             personaje.hp += self.hpMax/10.0
+            if not personaje.esta_furiozo:
+                personaje.kills += 1
             self.destroy(listaEnemigos)
             
         

@@ -67,4 +67,4 @@ ImgDamageIz=[ImagenDamageIz,ImgMuIz1]
 ListaImagenesDerecha=[ImgQuietoDe,ImgDCam,ImgAtaquDe,ImgMuerteDe,ImgDamageDe]
 ListaImagenesIzquierda=[ImgQuietoIz,ImgICam,ImgAtaqueIz,ImgMuerteIz,ImgDamageIz]
 
-ListaAnimacionesMob1=[ListaImagenesDerecha,ListaImagenesIzquierda]
+ListaAnimacionesMiniJefe=[ListaImagenesIzquierda,ListaImagenesDerecha]

@@ -2,10 +2,14 @@ import pygame
 from Personaje import *
 from Times import *
 from Fondo import *
-from imagenes import *
+from imagenes import ListaAnimacionesProtagonista
 from ImagenesJefe import ListaAnimacionesJefe
+from ImagenesMiniJefe import ListaAnimacionesMiniJefe
 
 def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos):
+    if personaje.esta_furiozo:
+        vx = vx*3
+        vy = vy*3
     fondo.update(pantalla,vx,vy,personaje)
     vx_enemigo = vx
     vy_enemigo = vy
@@ -17,7 +21,9 @@ def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,list
             if wall.colliderect(personaje.rect):
                 vx,vy=-vx,-vy
                 colision=True
-                break    
+                break
+                ##if wall == (5471,960,31,95):
+                  ##  nivelNieve(255,255,255)
     if colision==True:
         fondo.update(pantalla,vx,vy,personaje)
         for wall in listaWalls:
@@ -29,7 +35,7 @@ def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,list
 
     personaje.update(pantalla, t, False, suceso, vx, vy,listaFlechas,colision)
     for flecha in listaFlechas:
-        flecha.update(pantalla,listaFlechas,personaje,vx,vy,t)
+        flecha.update(pantalla,listaFlechas,personaje,vx,vy,t)     
 
 
 def main():
@@ -80,7 +86,7 @@ def main():
                 pygame.Rect(5408,1088,96,31)]
     personaje = Personaje.Personaje()
     enemigo1 = Enemigo("mob1", ListaAnimacionesMob1, 800, 600, 0, 100, 50, 2, 2, 10)
-    enemigo2 = Enemigo("Boss 1", ListaAnimacionesJefe, 1000, 1200, 0, 100, 50, 2, 2, 10)
+    enemigo2 = Enemigo("Mini Jefe", ListaAnimacionesMiniJefe, 1000, 1200, 0, 100, 50, 2, 2, 10)
     listaEnemigos = [enemigo1,enemigo2]
     vx,vy=0,0
     t = Times()
@@ -120,9 +126,9 @@ def main():
                         
                     if event.key == pygame.K_d:
                         suceso = "poder"
-                        
-                    if event.key == pygame.K_q:
-                        personaje.usarPota()
+                    
+                    if event.key == pygame.K_f:
+                        suceso = "furia"
                     
                         
                 if event.type == pygame.KEYUP:
