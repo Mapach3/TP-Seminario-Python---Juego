@@ -120,10 +120,10 @@ ImgMuIz7=pygame.image.load("Personaje\Izquierda\muerte7.png").convert_alpha()
 ImgMuerteIz=[ImgMuIz1,ImgMuIz2,ImgMuIz3,ImgMuIz4,ImgMuIz5,ImgMuIz6,ImgMuIz7]
 
 ImagenDamageDe=pygame.image.load("Personaje\Derecha\damageymuerte1.png").convert_alpha()
-ImgDamageDe=[ImagenDamageDe]
+ImgDamageDe=[imagen1,ImagenDamageDe]
 
 ImagenDamageIz=pygame.image.load("Personaje\Izquierda\damageymuerte1.png").convert_alpha()
-ImgDamageIz=[ImagenDamageIz]
+ImgDamageIz=[imageen1,ImagenDamageIz]
 
 ListaImagenesDerecha=[ImgQuietoDe,ImgDCam,ImgAtaquDe,ImgPoderDe,ImgArcoDe,ImgMuerteDe,ImgDamageDe]
 ListaImagenesIzquierda=[ImgQuietoIz,ImgICam,ImgAtaqueIz,ImgPoderIz,ImgArcoIz,ImgMuerteIz,ImgDamageIz]

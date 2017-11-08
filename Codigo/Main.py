@@ -4,8 +4,10 @@ from Times import *
 from Fondo import *
 from imagenes import *
 
-def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls):
+def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos):
     fondo.update(pantalla,vx,vy,personaje)
+    vx_enemigo = vx
+    vy_enemigo = vy
     colision=False
     for wall in listaWalls:
             if personaje.moviendo:
@@ -19,7 +21,12 @@ def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,list
         fondo.update(pantalla,vx,vy,personaje)
         for wall in listaWalls:
             wall.move_ip(-vx,-vy)
-    personaje.update(pantalla, t, False, suceso, vx, vy,listaFlechas)
+        vx_enemigo = 0
+        vy_enemigo = 0
+    for enemigo in listaEnemigos:
+        enemigo.update(pantalla, t, listaEnemigos, personaje, vx_enemigo, vy_enemigo, listaFlechas, colision)
+
+    personaje.update(pantalla, t, False, suceso, vx, vy,listaFlechas,colision)
     for flecha in listaFlechas:
         flecha.update(pantalla,listaFlechas,personaje,vx,vy,t)
 
@@ -34,6 +41,7 @@ def main():
     fondo = Fondo(pygame.image.load("Mapa1Final.png"),0,-0)
     listaFlechas = []
     listaWalls=[]
+    listaEnemigos=[]
     listaWalls=[pygame.Rect(255,290,3,1200),pygame.Rect(256,1533,833,3),
                 pygame.Rect(1090,1344,3,200),pygame.Rect(1087,833,3,325),
                 pygame.Rect(1088,288,3,360),pygame.Rect(269,244,818,3),
@@ -69,7 +77,9 @@ def main():
                 pygame.Rect(5440,927,63,31),pygame.Rect(5439,1056,63,31),
                 pygame.Rect(5408,1088,96,31)]
     personaje = Personaje.Personaje()
-
+    enemigo1 = Enemigo("mob1", ListaAnimacionesMob1, 300, 300, 0, 100, 100, 2, 2, 10)
+    enemigo2 = Enemigo("mob1", ListaAnimacionesMob1, 400, 400, 0, 100, 100, 2, 2, 10)
+    listaEnemigos = [enemigo1,enemigo2]
     vx,vy=0,0
     t = Times()
     
@@ -148,7 +158,7 @@ def main():
 
         pantalla.fill((0,0,170))
         t.update_times()
-        moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls)
+        moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos)
         pygame.display.update()
     pygame.quit()
     

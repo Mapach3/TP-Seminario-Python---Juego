@@ -1,4 +1,5 @@
 import pygame
+from __builtin__ import True
 pygame.init()
 
 class Enemigo(pygame.sprite.Sprite):
@@ -12,7 +13,7 @@ class Enemigo(pygame.sprite.Sprite):
         self.vx, self.vy = 0,0
         #seteo imagenes
         self.orientacion = orientacion
-        self.movimiento = 1
+        self.movimiento = 0
         self.imagen_actual = 0
 
         #estados
@@ -21,7 +22,7 @@ class Enemigo(pygame.sprite.Sprite):
         self.moviendo = False
         self.atacando = False
         self.vivo = True
-
+        self.siguiendo = False
         #drop
         self.expDrop = expDrop
 
@@ -45,53 +46,62 @@ class Enemigo(pygame.sprite.Sprite):
             self.imagen_actual = 0
         self.imagen = self.animacion[self.imagen_actual]
         
-    def update(self, superficie, t, listaEnemigos, personaje, vx, vy, listaFlechas):
+    def update(self, superficie, t, listaEnemigos, personaje, vx, vy, listaFlechas,colision):
         
-        if self.hp <= 0:
-            self.estaVivo = False
+        if self.siguiendo:
+            self.seguir(personaje)
         
-        if self.estaVivo == False:
-            self.destroy(listaEnemigos)
-        else:
-            if self.distancia <= self.distanciaMax:
-                if self.orientacion == 0:
-                    self.vx = -self.velocidad
-                else:
-                    self.vy = self.velocidad
-                self.distancia += self.velocidad
+        self.mover(-vx + self.vx, -vy + self.vy)
+        
+        if self.vx < 0: self.orientacion = 1
+        if self.vx > 0: self.orientacion = 0
+        
+        
+        if self.terminoAnimar():
+            if self.vx == 0 and self.vy == 0:
+                self.movimiento = 0
             else:
-                self.orientacion += 1
-                if self.orientacion == 2:
-                    self.orientacion = 0
-                
-            if self.terminoAnimar():
-                if self.vx == 0 and self.vy == 0:
-                    self.movimiento = 0
+                self.movimiento = 1
+                self.moviendo = True
+            if self.rect.colliderect(personaje.rect):
+                if personaje.movimiento == 2:
+                    self.movimiento = 4
+                    self.hp -= personaje.danio * 10
                 else:
-                    self.movimiento = 1
-                    self.moviendo = True
-
-                if self.rect.colliderect(personaje.rect):
                     personaje.hp -= self.danio
                     self.movimiento = 2
-                    self.seguir(personaje)
-                    if personaje.movimiento == 2:
-                        self.hp -= personaje.danio * 2
-                
-                for flecha in listaFlechas:
-                    if self.rect.colliderect(flecha.rect):
-                        flecha.destroy(listaFlechas)
-                        self.hp -= flecha.danio
-                        self.seguir(personaje)
-                
-            self.animacion = self.imagenes[self.orientacion][self.movimiento]
+                    self.siguiendo = True
+   
+            for flecha in listaFlechas:
+                if self.rect.colliderect(flecha.rect):
+                    flecha.destroy(listaFlechas)
+                    self.hp -= flecha.dano
+                    self.siguiendo = True
+                    self.movimiento = 4
+
+                if self.estaVivo == False:
+                    self.movimiento = 1
             
-            if t.t == 1:
-                self.animar()
-    
-            superficie.blit(self.imagen,self.rect)
+        self.animacion = self.imagenes[self.orientacion][self.movimiento]
+        
+        if t.t == 1:
+            self.animar()
+        
+        if self.hp <= 0 and self.imagen_actual == 6:
+            self.destroy(listaEnemigos)
+        superficie.blit(self.imagen,self.rect)
     
     def seguir(self,personaje):
-        pass
+        if self.rect.left < personaje.rect.left:
+            self.vx = self.velocidad
+        else:
+            self.vx = -self.velocidad
+        if self.rect.top < personaje.rect.top:
+            self.vy = self.velocidad
+        else:
+            self.vy = -self.velocidad
         
-    
+    def destroy(self,lista):
+        if self in lista:
+            lista.remove(self)
+            

@@ -55,15 +55,17 @@ class Personaje(pygame.sprite.Sprite):
         if self.imagen_actual >= len(self.animacion):
             self.imagen_actual = 0
         self.imagen = self.animacion[self.imagen_actual]
-    def update(self, superficie, t, subioLvl, suceso, vx, vy, listaFlechas):
+    def update(self, superficie, t, subioLvl, suceso, vx, vy, listaFlechas,colision):
         
+        if self.movimiento == 6 and self.imagen_actual == 4:
+            t.gameover = True
         if self.hp <= 0:
             self.estaVivo = False
-    
-        if vx < 0:
-            self.orientacion = 0
-        if vx > 0:
-            self.orientacion = 1
+        if colision == False:
+            if vx < 0:
+                self.orientacion = 0
+            if vx > 0:
+                self.orientacion = 1
             
         if self.terminoAnimar():
             if vx == 0 and vy == 0:
@@ -87,6 +89,9 @@ class Personaje(pygame.sprite.Sprite):
             if suceso == "poder":
                 self.movimiento = 3
                 podersonido.play()
+                
+            if self.estaVivo == False:
+                self.movimiento = 5
                 
             if self.movimiento != 1:
                 self.moviendo = False
