@@ -110,7 +110,7 @@ class Personaje(pygame.sprite.Sprite):
                         podersonido.play()
                 
                 if suceso == "furia" and self.kills >= self.killsToFuria and self.lvl >= 3:
-                    ##furiasonido.play()
+                    furiasonido.play()
                     podersonido.play()
                     self.esta_furiozo = True
                     self.kills = 0

@@ -53,6 +53,7 @@ listaEnemigos=[]
 fondo = Fondo(pygame.image.load("Mapa1Final.png"),0,0)
 
 def main():
+    validaciongameover=False
     import pygame
     suceso = "no atacando"
     pygame.init()
@@ -65,7 +66,7 @@ def main():
     listaWalls = listaWallsInicial
     listaEnemigos = listaEnemigosInicial
     fondo = Fondo(fondoInicial,0,0)
-
+    
 #     listaWalls = listaWallsHielo
 #     listaEnemigos = listaEnemigosHielo
 #     fondo = Fondo(fondoHielo,0,0)
@@ -82,6 +83,9 @@ def main():
     leftsigueapretada,rightsigueapretada,downsigueapretada,upsigueapretada= False,False,False,False
     
     pantalla.blit(personaje.imagen,personaje.rect)
+    pygame.mixer.music.load("Sonidos/bosque.mid")
+    pygame.mixer.music.play()
+    pygame.mixer.music.set_volume(0.15)
     while salir!=True:#LOOP PRINCIPAL
         reloj.tick(28)
         suceso = "no atacando"
@@ -149,7 +153,10 @@ def main():
         pantalla.fill((0,0,170))
         t.update_times()
         if t.gameover == True:
-            gameoversonido.play()
+            pygame.mixer.music.stop()
+            if(validaciongameover==False):
+                gameoversonido.play()
+                validaciongameover=True
             pantalla.blit(gameover,(0,0))
         else:
             moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos,informacion)

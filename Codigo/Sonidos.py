@@ -16,6 +16,8 @@ podersonido.set_volume(0.3)
 flechasonido=pygame.mixer.Sound("Sonidos/flechazo.wav")
 furiasonido=pygame.mixer.Sound("Sonidos/furia.wav")
 furiasonido.set_volume(0.2)
+golpeenemigo=pygame.mixer.Sound("Sonidos/golpeenemigo.wav")
+golpeenemigo.set_volume(0.35)
 
 pygame.mixer.music.load("Sonidos/peleaboss.mp3") #Musica boosfight
 

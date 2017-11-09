@@ -4,6 +4,7 @@ from ImagenesJefe import ListaAnimacionesJefe
 from ImagenesMiniJefe import ListaAnimacionesMiniJefe
 from ImagenesMob import ListaAnimacionesMob1
 from ImagenesMob2 import ListaAnimacionesMob2
+from Sonidos import *
 from __builtin__ import True
 pygame.init()
 
@@ -116,6 +117,7 @@ class Enemigo(pygame.sprite.Sprite):
                 self.es_golpeado = True
             else:
                 self.esta_golpeando = True
+                
         
         if self.terminoAnimar():
             if self.vx == 0 and self.vy == 0:
@@ -129,11 +131,13 @@ class Enemigo(pygame.sprite.Sprite):
                 self.movimiento = 4
                 self.hp -= personaje.danio
                 self.moviendo = False 
+                golpeadosonido.play()
             if self.esta_golpeando:
                 personaje.hp -= self.danio
                 personaje.movimiento = 6
                 self.movimiento = 2
                 self.siguiendo = True
+                golpeenemigo.play()
             if self.poderBoss1 == True:
                 self.movimiento = 2
                 ##poderBoss1.play()
