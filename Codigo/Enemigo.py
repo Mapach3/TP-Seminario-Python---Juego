@@ -1,18 +1,65 @@
 import pygame
+import random
+from ImagenesJefe import ListaAnimacionesJefe
+from ImagenesMiniJefe import ListaAnimacionesMiniJefe
+from ImagenesMob import ListaAnimacionesMob1
+from ImagenesMob2 import ListaAnimacionesMob2
 from __builtin__ import True
 pygame.init()
 
 class Enemigo(pygame.sprite.Sprite):
-    def __init__(self,tipo,imagenes,left,top,orientacion,expDrop,hpMax,velocidad,danio,distanciaMax):
+    def __init__(self,tipo,left,top,orientacion):
         self.tipo = tipo
-        self.imagenes = imagenes
+        if self.tipo == "Enemigo 1":
+            self.imagenes =  
+            self.dropExp = 0
+            self.hpMax = hpMax
+            self.hp = self.hpMax
+            self.velocidad = velocidad
+            self.danio = danio
+        
+        if self.tipo == "Enemigo 2":
+            self.imagenes = imagenes 
+            self.dropExp = 0
+            self.hpMax = hpMax
+            self.hp = self.hpMax
+            self.velocidad = velocidad
+            self.danio = danio
+        
+        if self.tipo == "Mini Jefe":
+            self.imagenes = imagenes 
+            self.dropExp = 0
+            self.hpMax = hpMax
+            self.hp = self.hpMax
+            self.velocidad = velocidad
+            self.danio = danio
+        
+        
+        if self.tipo == "Jefe":
+            self.imagenes = imagenes 
+            self.dropExp = 0
+            self.hpMax = hpMax
+            self.hp = self.hpMax
+            self.velocidad = velocidad
+            self.danio = danio
+            
+        
+        if self.tipo == "Jefe Final":
+            self.imagenes = imagenes 
+            self.dropExp = 0
+            self.hpMax = hpMax
+            self.hp = self.hpMax
+            self.velocidad = velocidad
+            self.danio = danio
+        
+        
         self.animacion = self.imagenes[0][0]
         self.imagen = self.animacion[0]
         self.rect = self.imagen.get_rect()
         self.rect.left, self.rect.top = left,top
         self.vx, self.vy = 0,0
         #seteo imagenes
-        self.orientacion = orientacion
+        self.orientacion = random.randrange(1)
         self.movimiento = 0
         self.imagen_actual = 0
 
@@ -27,16 +74,7 @@ class Enemigo(pygame.sprite.Sprite):
         self.esta_golpeando = False
         self.poderBoss1 = False
         
-        #drop
-        self.expDrop = expDrop
 
-        #stats
-        self.hpMax = hpMax
-        self.hp = self.hpMax
-        self.velocidad = velocidad
-        self.distancia = 0
-        self.distanciaMax = distanciaMax
-        self.danio = danio
 
     def mover(self,vx,vy):
         self.rect.move_ip(vx,vy)

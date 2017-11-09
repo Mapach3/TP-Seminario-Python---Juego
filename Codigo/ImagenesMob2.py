@@ -87,4 +87,4 @@ ImgMuerteIz=[ImgMuIz1,ImgMuIz2,ImgMuIz3,ImgMuIz4,ImgMuIz5,ImgMuIz6]
 ListaImagenesDerecha=[ImgQuietoDe,ImgDCam,ImgAtaquDe,ImgMuerteDe,ImgDamageDe]
 ListaImagenesIzquierda=[ImgQuietoIz,ImgICam,ImgAtaqueIz,ImgMuerteIz,ImgDamageIz]
 
-ListaAnimacionesProtagonista=[ListaImagenesDerecha,ListaImagenesIzquierda]
+ListaAnimacionesMob2 = [ListaImagenesIzquierda,ListaImagenesDerecha]

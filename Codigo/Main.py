@@ -22,7 +22,7 @@ def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,list
     for wall in listaWalls:
             if wall.colliderect(personaje.rect):
                 if wall.height == 95 and wall.width == 31 and t.puertaAbierta:
-                    ataquesonido.play()
+                    nivelHielo(listaWalls, listaEnemigos, fondo)
                 else:
                     vx,vy=-vx,-vy
                 colision=True
@@ -180,15 +180,16 @@ def main():
             gameoversonido.play()
             pantalla.blit(gameover,(0,0))
         else:
-            if t.winner == True:
-                pass
-                ##pantalla.blit(imagenvictoria,0,0)                
-                ##pygame.mixer.music.load(musicavictoria)
-                ##pygame.mixer.music.play()
-            else:
-                moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos,informacion)
+            moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos,informacion)
         pygame.display.update()
     pygame.quit()
     
-
-main()
+def nivelHielo(listaWalls,listaEnemigos,fondo):
+    listaWalls = []
+    listaEnemigos = []
+    fondo = Fondo(pygame.image.load(""),0,0)
+    
+def nivelJefeFinal(listaWalls,listaEnemigos,fondo):
+    listaWalls = []
+    listaEnemigos = []
+    fondo = Fondo(pygame.image.load(""),0,0)

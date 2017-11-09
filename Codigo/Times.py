@@ -12,6 +12,7 @@ class Times(object):
         self.winner = False
         self.tiempoanterior = 0
         self.puertaAbierta = False
+        self.nivelHielo = False
     def update_times(self):
         self.t+=1
         self.tde2+=1
