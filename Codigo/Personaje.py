@@ -66,7 +66,7 @@ class Personaje(pygame.sprite.Sprite):
         if self.exp >= self.expParaSubir:
             self.subirLvl()
         
-        if self.hp <= 0 and self.movimiento == 5 and self.imagen_actual == 4:
+        if self.hp <= 0 and self.movimiento == 5 and self.imagen_actual == 3:
             t.gameover = True
         if self.hp <= 0:
             self.estaVivo = False

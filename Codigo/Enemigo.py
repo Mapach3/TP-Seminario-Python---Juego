@@ -8,40 +8,40 @@ from __builtin__ import True
 pygame.init()
 
 class Enemigo(pygame.sprite.Sprite):
-    def __init__(self,tipo,left,top,orientacion):
+    def __init__(self,tipo,left,top):
         self.tipo = tipo
         if self.tipo == "Enemigo 1":
-            self.imagenes =  
+            self.imagenes =  ListaAnimacionesMob1
             self.dropExp = 0
-            self.hpMax = hpMax
+            self.hpMax = 150
             self.hp = self.hpMax
-            self.velocidad = velocidad
-            self.danio = danio
+            self.velocidad = 5
+            self.danio = 7
         
         if self.tipo == "Enemigo 2":
-            self.imagenes = imagenes 
+            self.imagenes = ListaAnimacionesMob2
             self.dropExp = 0
-            self.hpMax = hpMax
+            self.hpMax = 300
             self.hp = self.hpMax
-            self.velocidad = velocidad
-            self.danio = danio
+            self.velocidad = 7
+            self.danio = 10
         
         if self.tipo == "Mini Jefe":
-            self.imagenes = imagenes 
+            self.imagenes = ListaAnimacionesMiniJefe
             self.dropExp = 0
-            self.hpMax = hpMax
+            self.hpMax = 500
             self.hp = self.hpMax
-            self.velocidad = velocidad
-            self.danio = danio
+            self.velocidad = 10
+            self.danio = 20
         
         
         if self.tipo == "Jefe":
-            self.imagenes = imagenes 
+            self.imagenes = ListaAnimacionesJefe
             self.dropExp = 0
-            self.hpMax = hpMax
+            self.hpMax = 2000
             self.hp = self.hpMax
-            self.velocidad = velocidad
-            self.danio = danio
+            self.velocidad = 12
+            self.danio = 50
             
         
         if self.tipo == "Jefe Final":

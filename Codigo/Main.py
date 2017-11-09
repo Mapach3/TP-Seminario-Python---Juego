@@ -93,14 +93,11 @@ def main():
                 pygame.Rect(5408,1088,96,31),pygame.Rect(5440,960,31,95)]
     personaje = Personaje.Personaje()
     informacion = Informacion()
-    enemigo1 = Enemigo("mob1", ListaAnimacionesMob1, 800, 600, 0, 100, 50, 2, 2, 10)
-    enemigo2 = Enemigo("mob1", ListaAnimacionesMob1, 1000, 300, 0, 100, 50, 2, 2, 10)
-    enemigo3 = Enemigo("mob1", ListaAnimacionesMob1, 400, 1000, 0, 100, 50, 2, 2, 10)
-    enemigo4 = Enemigo("mob1", ListaAnimacionesMob1, 1500, 600, 0, 100, 50, 2, 2, 10)
-    enemigo5 = Enemigo("mob1", ListaAnimacionesMob1, 2000, 1200, 0, 100, 50, 2, 2, 10)
-    enemigo6 = Enemigo("mob1", ListaAnimacionesMob1, 3000, 1500, 0, 100, 50, 2, 2, 10)
-    miniJefe = Enemigo("Mini Jefe", ListaAnimacionesMiniJefe, 1000, 600, 0, 100, 50, 2, 2, 10)
-    listaEnemigos = [enemigo1,enemigo2,enemigo3,enemigo4,enemigo5,enemigo6,miniJefe]
+    enemigo1 = Enemigo("Enemigo 1", 800, 600)
+    enemigo2 = Enemigo("Enemigo 2", 900, 500)
+    enemigo3 = Enemigo("Mini Jefe", 1000, 500)
+    enemigo4 = Enemigo("Jefe", 1100, 600)
+    listaEnemigos = [enemigo1,enemigo2,enemigo3,enemigo4]
     vx,vy=0,0
     t = Times()
     
@@ -193,3 +190,5 @@ def nivelJefeFinal(listaWalls,listaEnemigos,fondo):
     listaWalls = []
     listaEnemigos = []
     fondo = Fondo(pygame.image.load(""),0,0)
+    
+main()
