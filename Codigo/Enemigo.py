@@ -95,6 +95,7 @@ class Enemigo(pygame.sprite.Sprite):
         
         if self.siguiendo:
             self.seguir(personaje)
+
         
         if self.poderBoss1 == True:
             self.mover(-vx + self.vx*7, -vy + self.vy*7)

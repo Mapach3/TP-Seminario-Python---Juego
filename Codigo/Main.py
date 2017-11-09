@@ -202,7 +202,7 @@ def main(cargar=False):
             if t.nivelHielo == True:
                 pygame.mixer.stop()
                 pygame.mixer.music.load("Sonidos/nieve.mid")
-                pygame.mixer.music.play()
+                pygame.mixer.music.play(20)
                 pygame.mixer.music.set_volume(0.3)
                 t.estaNivelHielo = True
                 t.nivelHielo = False
@@ -212,7 +212,7 @@ def main(cargar=False):
                 personaje.rect.left,personaje.rect.top = (350,250)
             if t.nivelJefeFinal == True:
                 pygame.mixer.music.load("Sonidos/peleaboss.mp3")
-                pygame.mixer.music.play()
+                pygame.mixer.music.play(20)
                 pygame.mixer.music.set_volume(0.4)
                 t.estaNivelJefeFinal = True
                 t.nivelJefeFinal = False

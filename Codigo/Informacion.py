@@ -11,8 +11,8 @@ class Informacion(pygame.sprite.Sprite):
         self.maketext(personaje)
         ypad=3
         ypad2=3
-        pantalla.blit(self.fondo,(-1,0))        
-        pantalla.blit(self.botones,(100,500))
+        pantalla.blit(self.fondo,(-5,-5))        
+        pantalla.blit(self.botones,(0,540))
         for texto in self.listaTextos:
             pantalla.blit(texto,(40,ypad))
             ypad+=25
