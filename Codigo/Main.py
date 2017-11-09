@@ -6,6 +6,7 @@ from Informacion import *
 from imagenes import ListaAnimacionesProtagonista
 from ImagenesJefe import ListaAnimacionesJefe
 from ImagenesMiniJefe import ListaAnimacionesMiniJefe
+from Sonidos import *
 
 def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos,informacion):
     if personaje.esta_furiozo:
@@ -20,11 +21,14 @@ def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,list
                 wall.move_ip(-vx,-vy)
     for wall in listaWalls:
             if wall.colliderect(personaje.rect):
-                vx,vy=-vx,-vy
+                if wall.height == 95 and wall.width == 31 and t.puertaAbierta:
+                    ataquesonido.play()
+                else:
+                    vx,vy=-vx,-vy
                 colision=True
                 break
-                ##if wall == (5471,960,31,95):
-                  ##  nivelNieve(255,255,255)
+            
+
     if colision==True:
         fondo.update(pantalla,vx,vy,personaje)
         for wall in listaWalls:
@@ -32,7 +36,7 @@ def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,list
         vx_enemigo = 0
         vy_enemigo = 0
     for enemigo in listaEnemigos:
-        enemigo.update(pantalla, t, listaEnemigos, personaje, vx_enemigo, vy_enemigo, listaFlechas, colision)
+        enemigo.update(pantalla, t, listaEnemigos, personaje, vx_enemigo, vy_enemigo, listaFlechas, colision,listaWalls)
 
     personaje.update(pantalla, t, False, suceso, vx, vy,listaFlechas,colision)
     for flecha in listaFlechas:
@@ -52,6 +56,7 @@ def main():
     listaFlechas = []
     listaWalls=[]
     listaEnemigos=[]
+    puerta = pygame.Rect(5471,960,31,95)
     listaWalls=[pygame.Rect(255,290,3,1200),pygame.Rect(256,1533,833,3),
                 pygame.Rect(1090,1344,3,200),pygame.Rect(1087,833,3,325),
                 pygame.Rect(1088,288,3,360),pygame.Rect(269,244,818,3),
@@ -85,7 +90,7 @@ def main():
                 pygame.Rect(4414,2208,194,3),pygame.Rect(4640,833,3,106),
                 pygame.Rect(4642,1120,3,106),pygame.Rect(5408,895,96,1),
                 pygame.Rect(5440,927,63,31),pygame.Rect(5439,1056,63,31),
-                pygame.Rect(5408,1088,96,31)]
+                pygame.Rect(5408,1088,96,31),pygame.Rect(5440,960,31,95)]
     personaje = Personaje.Personaje()
     informacion = Informacion()
     enemigo1 = Enemigo("mob1", ListaAnimacionesMob1, 800, 600, 0, 100, 50, 2, 2, 10)
@@ -175,7 +180,13 @@ def main():
             gameoversonido.play()
             pantalla.blit(gameover,(0,0))
         else:
-            moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos,informacion)
+            if t.winner == True:
+                pass
+                ##pantalla.blit(imagenvictoria,0,0)                
+                ##pygame.mixer.music.load(musicavictoria)
+                ##pygame.mixer.music.play()
+            else:
+                moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos,informacion)
         pygame.display.update()
     pygame.quit()
     

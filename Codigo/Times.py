@@ -11,6 +11,7 @@ class Times(object):
         self.gameover = False
         self.winner = False
         self.tiempoanterior = 0
+        self.puertaAbierta = False
     def update_times(self):
         self.t+=1
         self.tde2+=1

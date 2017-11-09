@@ -50,7 +50,7 @@ class Enemigo(pygame.sprite.Sprite):
             self.imagen_actual = 0
         self.imagen = self.animacion[self.imagen_actual]
         
-    def update(self, superficie, t, listaEnemigos, personaje, vx, vy, listaFlechas,colision):
+    def update(self, superficie, t, listaEnemigos, personaje, vx, vy, listaFlechas,colision,listaWalls):
         
         if self.siguiendo:
             self.seguir(personaje)
@@ -145,6 +145,7 @@ class Enemigo(pygame.sprite.Sprite):
                 if self.tipo == "mob2":
                     personaje.exp += 60
                 if self.tipo == "Mini Jefe":
+                    t.puertaAbierta = True
                     personaje.exp += 200
                 if not personaje.esta_furiozo:
                     personaje.kills += 1
@@ -167,8 +168,6 @@ class Enemigo(pygame.sprite.Sprite):
         else:
             self.vy = -self.velocidad
             
-    def poderBoss2(self):
-        pass
      
     def destroy(self,lista):
         if self in lista:
