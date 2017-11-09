@@ -46,10 +46,12 @@ def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,list
         flecha.update(pantalla,listaFlechas,personaje,vx,vy,t)     
     
     informacion.update(pantalla,personaje)
+
 listaFlechas = []
 listaWalls=[]
 listaEnemigos=[]
-fondo = Fondo(pygame.image.load("Mapa1Final.png"),0,-0)
+fondo = Fondo(pygame.image.load("Mapa1Final.png"),0,0)
+
 def main():
     import pygame
     suceso = "no atacando"
@@ -78,8 +80,6 @@ def main():
     t = Times()
     
     leftsigueapretada,rightsigueapretada,downsigueapretada,upsigueapretada= False,False,False,False
-    
-  
     
     pantalla.blit(personaje.imagen,personaje.rect)
     while salir!=True:#LOOP PRINCIPAL
