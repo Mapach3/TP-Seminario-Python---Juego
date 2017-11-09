@@ -45,7 +45,11 @@ listaWallsHielo = [pygame.Rect(317,110,3,286),pygame.Rect(315,55,138,3),
                    pygame.Rect(1155,1358,62,45),pygame.Rect(1544,1375,84,66),
                    pygame.Rect(2019,1378,84,66),pygame.Rect(2272,1393,62,45),
                    pygame.Rect(2211,879,62,45),pygame.Rect(2533,1122,87,38),
-                   pygame.Rect(1653,1076,158,133),puertaJefeFinal]
+                   pygame.Rect(1653,1076,158,133),pygame.Rect(2945,1171,248,3),
+                   pygame.Rect(2945,1332,248,3),pygame.Rect(3161,1333,32,94),
+                   pygame.Rect(3160,1011,32,155),pygame.Rect(3192,1012,576,8),
+                   pygame.Rect(3769,1012,5,383),pygame.Rect(3160,1396,608,8),
+                   puertaJefeFinal]
 
 
 fondoHielo = pygame.image.load("MapaHieloFinal.png")            
