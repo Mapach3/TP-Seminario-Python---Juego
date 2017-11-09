@@ -2,11 +2,12 @@ import pygame
 from Personaje import *
 from Times import *
 from Fondo import *
+from Informacion import *
 from imagenes import ListaAnimacionesProtagonista
 from ImagenesJefe import ListaAnimacionesJefe
 from ImagenesMiniJefe import ListaAnimacionesMiniJefe
 
-def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos):
+def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos,informacion):
     if personaje.esta_furiozo:
         vx = vx*3
         vy = vy*3
@@ -36,7 +37,8 @@ def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,list
     personaje.update(pantalla, t, False, suceso, vx, vy,listaFlechas,colision)
     for flecha in listaFlechas:
         flecha.update(pantalla,listaFlechas,personaje,vx,vy,t)     
-
+    
+    informacion.update(pantalla,personaje)
 
 def main():
     import pygame
@@ -85,6 +87,7 @@ def main():
                 pygame.Rect(5440,927,63,31),pygame.Rect(5439,1056,63,31),
                 pygame.Rect(5408,1088,96,31)]
     personaje = Personaje.Personaje()
+    informacion = Informacion()
     enemigo1 = Enemigo("mob1", ListaAnimacionesMob1, 800, 600, 0, 100, 50, 2, 2, 10)
     enemigo2 = Enemigo("Mini Jefe", ListaAnimacionesMiniJefe, 1000, 1200, 0, 100, 50, 2, 2, 10)
     listaEnemigos = [enemigo1,enemigo2]
@@ -162,12 +165,12 @@ def main():
                     
 
         pantalla.fill((0,0,170))
+        t.update_times()
         if t.gameover == True:
             gameoversonido.play()
             pantalla.blit(gameover,(0,0))
         else:
-            t.update_times()
-            moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos)
+            moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos,informacion)
         pygame.display.update()
     pygame.quit()
     
