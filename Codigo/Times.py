@@ -7,9 +7,10 @@ class Times(object):
         self.tde40=0
         self.tde80=0
         self.tde200=0
-        self.trespawn=[]
-        self.gameover=False
-        self.tiempoanterior=0
+        self.trespawn = []
+        self.gameover = False
+        self.winner = False
+        self.tiempoanterior = 0
     def update_times(self):
         self.t+=1
         self.tde2+=1

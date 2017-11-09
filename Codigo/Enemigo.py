@@ -136,11 +136,20 @@ class Enemigo(pygame.sprite.Sprite):
                 self.animar()
                 
         if self.hp <= 0 and self.movimiento == 3 and self.imagen_actual == 3:
-            personaje.hp += self.hpMax/10.0
-            if not personaje.esta_furiozo:
-                personaje.kills += 1
+            if self.tipo == "Jefe Final":
+                t.winner == True
+            else:
+                personaje.hp += self.hpMax/10.0
+                if self.tipo == "mob1":
+                    personaje.exp += 20
+                if self.tipo == "mob2":
+                    personaje.exp += 60
+                if self.tipo == "Mini Jefe":
+                    personaje.exp += 200
+                if not personaje.esta_furiozo:
+                    personaje.kills += 1
             self.destroy(listaEnemigos)
-            
+                
         
         if self.hp <= 0 and self.movimiento == 3 and self.imagen_actual == 2 and self.tipo == "Boss 1":
             personaje.hp += self.hpMax/10.0

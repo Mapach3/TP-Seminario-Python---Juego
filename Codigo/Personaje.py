@@ -60,7 +60,13 @@ class Personaje(pygame.sprite.Sprite):
         self.imagen = self.animacion[self.imagen_actual]
     def update(self, superficie, t, subioLvl, suceso, vx, vy, listaFlechas,colision):
         
-        if self.movimiento == 5 and self.imagen_actual == 6:
+        if self.hp > self.hpMax:
+            self.hp = self.hpMax
+        
+        if self.exp >= self.expParaSubir:
+            self.subirLvl()
+        
+        if self.hp <= 0 and self.movimiento == 5 and self.imagen_actual == 4:
             t.gameover = True
         if self.hp <= 0:
             self.estaVivo = False
@@ -71,7 +77,7 @@ class Personaje(pygame.sprite.Sprite):
                 self.orientacion = 1
             
         if self.terminoAnimar():
-            if vx == 0 and vy == 0:
+            if vx == 0 and vy == 0 and self.movimiento != 4:
                 self.movimiento = 0
             else:
                 self.movimiento = 1
@@ -129,15 +135,14 @@ class Personaje(pygame.sprite.Sprite):
                 return False
         return True
     
-    def subirLvl(self, superficie, subioLvl, t):
-        self.subioLvl = True
+    def subirLvl(self):
         self.lvl += 1
-        t.tde8 = 0
         self.exp -= self.expParaSubir 
         self.expParaSubir += self.expParaSubir/4
         ##subirLvl.play()
         self.danio += self.danio/4
         self.hpMax += self.hpMax/4
+        self.hp = self.hpMax
 
     def usarPota(self):
         if self.potas > 0:
