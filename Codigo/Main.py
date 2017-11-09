@@ -7,8 +7,6 @@ from imagenes import ListaAnimacionesProtagonista
 from ImagenesJefe import ListaAnimacionesJefe
 from ImagenesMiniJefe import ListaAnimacionesMiniJefe
 from Sonidos import *
-from NivelHielo import *
-from Enemigo import *
 
 def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos,informacion):
     if personaje.esta_furiozo:
@@ -186,7 +184,7 @@ def main():
 def nivelHielo(listaWalls,listaEnemigos,fondo):
     listaWalls = []
     listaEnemigos = []
-    fondo = Fondo(fondoHielo,0,0)
+    fondo = Fondo(pygame.image.load(""),0,0)
     
 def nivelJefeFinal(listaWalls,listaEnemigos,fondo):
     listaWalls = []
