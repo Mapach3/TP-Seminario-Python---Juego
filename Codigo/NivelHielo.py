@@ -1,5 +1,5 @@
 import pygame
-import Enemigo
+from Enemigo import *
 pygame.init()
 pygame.display.set_mode((800,600))
 
@@ -27,6 +27,6 @@ enemigo14 = Enemigo("Enemigo 2",1219,935)
 
 listaEnemigosHielo = [enemigo1,enemigo2,enemigo3,enemigo4,enemigo5,enemigo6,enemigo7,enemigo8,enemigo9,enemigo10,enemigo11,enemigo12,enemigo13,enemigo14]
 
-#listaWallsHielo = [pared1,pared2]
+listaWallsHielo = []
 
-#fondoHielo = pygame.image.load("MapaHieloFinal.png")            
+fondoHielo = pygame.image.load("MapaHieloFinal.png")            

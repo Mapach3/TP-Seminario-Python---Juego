@@ -1,5 +1,5 @@
 import pygame
-import Enemigo
+from Enemigo import *
 pygame.init()
 pygame.display.set_mode((800,600))
 
@@ -9,7 +9,7 @@ enemigo1 = Enemigo("Jefe",1680,713)
 
 ###pared = pygame.Rect(left,top,alto,ancho)
 pared1=pygame.Rect(333,191,134,31) #PARED INICIO NIVEL HORIZONTAL
-pared2=pygame.Rect(334,223,53.517) #PARED PASILLO VERTICAL IZQUIERDA
+pared2=pygame.Rect(334,223,53,517) #PARED PASILLO VERTICAL IZQUIERDA
 pared3=pygame.Rect(435,223,77,354) #PARED PASILLO VERTICAL DERECHA
 pared4=pygame.Rect(367,709,241,32) #PARED PASILLO HORIZONTAL INFERIOR
 
