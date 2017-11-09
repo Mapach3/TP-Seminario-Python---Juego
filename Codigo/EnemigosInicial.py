@@ -3,6 +3,7 @@ from Enemigo import *
 
 pygame.init()
 
+<<<<<<< HEAD
 listaWallsInicial = [pygame.Rect(255,290,3,1200),pygame.Rect(256,1533,833,3),
             pygame.Rect(1090,1344,3,200),pygame.Rect(1087,833,3,325),
             pygame.Rect(1088,288,3,360),pygame.Rect(269,244,818,3),
@@ -38,6 +39,8 @@ listaWallsInicial = [pygame.Rect(255,290,3,1200),pygame.Rect(256,1533,833,3),
             pygame.Rect(5440,927,63,31),pygame.Rect(5439,1056,63,31),
             pygame.Rect(5408,1088,96,31),pygame.Rect(5440,960,31,95)]
 
+=======
+>>>>>>> 6907bc1e60bfd5ee64c75bdc38f9e8dcfbfec341
 enemigo1 = Enemigo("Enemigo 1",1529,556)
 enemigo2 = Enemigo("Enemigo 1",1400,750)
 enemigo3 = Enemigo("Enemigo 1",1700,900)
@@ -54,9 +57,34 @@ enemigo13 = Enemigo("Enemigo 2",3240,1245)
 enemigo14 = Enemigo("Enemigo 2",3100,870)
 enemigo15 = Enemigo("Enemigo 2",3240,1123)
 enemigo16 = Enemigo("Enemigo 2",3180,1335)
+<<<<<<< HEAD
 
 listaEnemigosInicial = [enemigo1,enemigo2,enemigo3,enemigo4,enemigo5,enemigo6,enemigo7,enemigo8,
                         enemigo9,enemigo10,enemigo11,enemigo12,enemigo13,
                         enemigo14,enemigo15,enemigo16]
 
 fondoInicial = pygame.image.load("Mapa1Final.png")
+=======
+enemigo17 = Enemigo("Enemigo 2",3350,1100)
+enemigo18 = Enemigo("Enemigo 2",3550,650)
+enemigo19 = Enemigo("Enemigo 2",3500,800)
+enemigo20 = Enemigo("Enemigo 2",3600,1000)
+enemigo21 = Enemigo("Enemigo 2",4350,540)
+enemigo22 = Enemigo("Enemigo 2",3900,800)
+enemigo23 = Enemigo("Enemigo 2",3940,940)
+enemigo24 = Enemigo("Enemigo 2",4250,900)
+enemigo25 = Enemigo("Enemigo 2",4500,900)
+enemigo26 = Enemigo("Enemigo 2",4270,1230)
+enemigo27 = Enemigo("Enemigo 2",4200,1450)
+enemigo28 = Enemigo("Enemigo 2",4500,1200)
+enemigo29 = Enemigo("Enemigo 2",4600,1370)
+enemigo30 = Enemigo("Enemigo 2",5300,900)
+enemigo31 = Enemigo("Enemigo 1",5300,1100)
+
+listaEnemigosInicial = [enemigo1,enemigo2,enemigo3,enemigo4,enemigo5,enemigo6,enemigo7,enemigo8,
+                        enemigo9,enemigo10,enemigo11,enemigo12,enemigo13,
+                        enemigo14,enemigo15,enemigo16,enemigo17,enemigo18,
+                        enemigo19,enemigo20,enemigo21,enemigo22,enemigo23,
+                        enemigo24,enemigo25,enemigo26,enemigo27,enemigo28,
+                        enemigo29,enemigo30,enemigo31]
+>>>>>>> 6907bc1e60bfd5ee64c75bdc38f9e8dcfbfec341
