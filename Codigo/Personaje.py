@@ -95,14 +95,14 @@ class Personaje(pygame.sprite.Sprite):
                 flechasonido.play()
                 flechasonido.set_volume(0.14)
             
-            if suceso == "poder":
+            if suceso == "poder" and self.lvl >= 3:
                 if self.puedeTirarPoder(listaFlechas):
                     self.movimiento = 3
                     flecha = Flecha(self,"poder")
                     listaFlechas.append(flecha)
                     podersonido.play()
             
-            if suceso == "furia" and self.kills >= self.killsToFuria:
+            if suceso == "furia" and self.kills >= self.killsToFuria and self.lvl >= 5:
                 ##furiasonido.play()
                 podersonido.play()
                 self.esta_furiozo = True
@@ -143,6 +143,7 @@ class Personaje(pygame.sprite.Sprite):
         self.danio += self.danio/4
         self.hpMax += self.hpMax/4
         self.hp = self.hpMax
+        self.velocidad += self.velocidad/5
 
     def usarPota(self):
         if self.potas > 0:

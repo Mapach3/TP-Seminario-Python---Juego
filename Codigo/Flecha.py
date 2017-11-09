@@ -21,8 +21,8 @@ class Flecha(pygame.sprite.Sprite):
         self.rect.top = personaje.rect.top + self.pos_comienzo[self.orientacion][1]
         self.rect.left = personaje.rect.left + self.pos_comienzo[self.orientacion][0]
         self.tiempo_actual = 0
-        self.tiempototal = 30
-        self.dano = 1 * personaje.danio
+        self.tiempototal = 15
+        self.dano = personaje.danio
         self.velocidad = 50
         self.vx,self.vy = 0,0
         

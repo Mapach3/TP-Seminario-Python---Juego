@@ -89,8 +89,13 @@ def main():
     personaje = Personaje.Personaje()
     informacion = Informacion()
     enemigo1 = Enemigo("mob1", ListaAnimacionesMob1, 800, 600, 0, 100, 50, 2, 2, 10)
-    enemigo2 = Enemigo("Mini Jefe", ListaAnimacionesMiniJefe, 1000, 1200, 0, 100, 50, 2, 2, 10)
-    listaEnemigos = [enemigo1,enemigo2]
+    enemigo2 = Enemigo("mob1", ListaAnimacionesMob1, 1000, 300, 0, 100, 50, 2, 2, 10)
+    enemigo3 = Enemigo("mob1", ListaAnimacionesMob1, 400, 1000, 0, 100, 50, 2, 2, 10)
+    enemigo4 = Enemigo("mob1", ListaAnimacionesMob1, 1500, 600, 0, 100, 50, 2, 2, 10)
+    enemigo5 = Enemigo("mob1", ListaAnimacionesMob1, 2000, 1200, 0, 100, 50, 2, 2, 10)
+    enemigo6 = Enemigo("mob1", ListaAnimacionesMob1, 3000, 1500, 0, 100, 50, 2, 2, 10)
+    miniJefe = Enemigo("Mini Jefe", ListaAnimacionesMiniJefe, 1000, 600, 0, 100, 50, 2, 2, 10)
+    listaEnemigos = [enemigo1,enemigo2,enemigo3,enemigo4,enemigo5,enemigo6,miniJefe]
     vx,vy=0,0
     t = Times()
     
