@@ -42,19 +42,7 @@ class Flecha(pygame.sprite.Sprite):
                 if self.tiempo_actual > self.tiempototal:
                     self.destroy(lista)
                 
-        #         for monster in listamonster:
-        #             if   monster.estavivo and monster.active and self.rect.colliderect(monster.rect) and t.t==1 and not monster.human:
-        #                 monster.hp-=self.dano+(7*jugador.magic/8)
-        #                 self.sound.play()
-        #                 pygame.draw.rect(superficie,(250,0,0),monster.rect)
-        #                 self.destroy(lista,jugador)
-        #             if monster.human and self.rect.colliderect(monster.rect):
-        #                 monster.textactive=True
-        #                 if  isinstance(monster,Teleporter):
-        #                     monster.teleport()
-        #                     self.destroy(lista, jugador)
-        #
-    
+
         superficie.blit(self.imagen,self.rect)
     def destroy(self,lista):
         if self in lista:                

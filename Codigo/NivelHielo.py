@@ -27,12 +27,9 @@ enemigo14 = Enemigo("Enemigo 2",1219,935)
 
 listaEnemigosHielo = [enemigo1,enemigo2,enemigo3,enemigo4,enemigo5,enemigo6,enemigo7,enemigo8,enemigo9,enemigo10,enemigo11,enemigo12,enemigo13,enemigo14]
 
-<<<<<<< HEAD
-listaWallsHielo = []
-=======
 listaWallsHielo = [pygame.Rect(317,110,3,286),pygame.Rect(315,55,138,3),
                    pygame.Rect(452,112,3,157),pygame.Rect(323,398,606,3),
-                   pygame.Rect(453,203,603,3),pygame.Rect(1056,269,3.562),
+                   pygame.Rect(453,203,603,3),pygame.Rect(1056,269,3,562),
                    pygame.Rect(927,400,3,1136),pygame.Rect(927,1535,2017,3),
                    pygame.Rect(2944,830,3,705),pygame.Rect(1078,765,1865,1),
                    pygame.Rect(998,771,53,1),pygame.Rect(964,1218,53,1),
@@ -46,6 +43,6 @@ listaWallsHielo = [pygame.Rect(317,110,3,286),pygame.Rect(315,55,138,3),
                    pygame.Rect(2019,1378,84,66),pygame.Rect(2272,1393,62,45),
                    pygame.Rect(2211,879,62,45),pygame.Rect(2533,1122,87,38),
                    pygame.Rect(1653,1076,158,133)]
->>>>>>> 6907bc1e60bfd5ee64c75bdc38f9e8dcfbfec341
+
 
 fondoHielo = pygame.image.load("MapaHieloFinal.png")            

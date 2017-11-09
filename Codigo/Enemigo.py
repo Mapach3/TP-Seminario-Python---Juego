@@ -12,7 +12,7 @@ class Enemigo(pygame.sprite.Sprite):
         self.tipo = tipo
         if self.tipo == "Enemigo 1":
             self.imagenes =  ListaAnimacionesMob1
-            self.dropExp = 0
+            self.dropExp = 20
             self.hpMax = 150
             self.hp = self.hpMax
             self.velocidad = 5
@@ -20,15 +20,15 @@ class Enemigo(pygame.sprite.Sprite):
         
         if self.tipo == "Enemigo 2":
             self.imagenes = ListaAnimacionesMob2
-            self.dropExp = 0
-            self.hpMax = 300
+            self.dropExp = 50
+            self.hpMax = 225
             self.hp = self.hpMax
             self.velocidad = 7
             self.danio = 10
         
         if self.tipo == "Mini Jefe":
             self.imagenes = ListaAnimacionesMiniJefe
-            self.dropExp = 0
+            self.dropExp = 300
             self.hpMax = 500
             self.hp = self.hpMax
             self.velocidad = 10
@@ -178,13 +178,9 @@ class Enemigo(pygame.sprite.Sprite):
                 t.winner == True
             else:
                 personaje.hp += self.hpMax/10.0
-                if self.tipo == "mob1":
-                    personaje.exp += 20
-                if self.tipo == "mob2":
-                    personaje.exp += 60
+                personaje.exp += self.dropExp
                 if self.tipo == "Mini Jefe":
                     t.puertaAbierta = True
-                    personaje.exp += 200
                 if not personaje.esta_furiozo:
                     personaje.kills += 1
             self.destroy(listaEnemigos)
@@ -193,7 +189,7 @@ class Enemigo(pygame.sprite.Sprite):
         if self.hp <= 0 and self.movimiento == 3 and self.imagen_actual == 2 and self.tipo == "Boss 1":
             personaje.hp += self.hpMax/10.0
             self.destroy(listaEnemigos)  
-            
+       
         superficie.blit(self.imagen,self.rect)
     
     def seguir(self,personaje):

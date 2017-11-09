@@ -95,4 +95,4 @@ ImgDamageIz=[ImagenDamageIz]
 ListaImagenesDerecha=[ImgQuietoDe,ImgDCam,ImgAtaquDe,ImgMuerteDe,ImgDamageDe,ImgPoderDe]
 ListaImagenesIzquierda=[ImgQuietoIz,ImgICam,ImgAtaqueIz,ImgMuerteIz,ImgDamageIz,ImgPoderIz]
 
-ListaAnimacionesJefe=[ListaImagenesIzquierda,ListaImagenesDerecha]
+ListaAnimacionesJefe=[ListaImagenesDerecha,ListaImagenesIzquierda]

@@ -8,8 +8,8 @@ pygame.display.set_mode((800,600))
 enemigo1 = Enemigo("Jefe",1680,713)
 
 ###pared = pygame.Rect(left,top,alto,ancho)
-pared1=pygame.Rect(333,191,134,31) #PARED INICIO NIVEL HORIZONTAL
-pared2=pygame.Rect(334,223,53,517) #PARED PASILLO VERTICAL IZQUIERDA
+pared1=pygame.Rect(333,171,134,31) #PARED INICIO NIVEL HORIZONTAL
+pared2=pygame.Rect(324,223,20,517) #PARED PASILLO VERTICAL IZQUIERDA
 pared3=pygame.Rect(435,223,77,354) #PARED PASILLO VERTICAL DERECHA
 pared4=pygame.Rect(367,709,241,32) #PARED PASILLO HORIZONTAL INFERIOR
 
@@ -24,4 +24,4 @@ listaEnemigosJefe = [enemigo1]
 
 listaWallsJefeFinal = [pared1,pared2,pared3,pared4,pared5,pared6,pared7,pared8,pared9]
 
-#fondoJefeFinal = pygame.image.load("MapaBossFinal.png")  
+fondoJefeFinal = pygame.image.load("MapaBossFinal.png")  
