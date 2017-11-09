@@ -2,7 +2,7 @@ import pygame
 from Enemigo import *
 
 pygame.init()
-
+puertaHielo = pygame.Rect(4330,1880,700,120)
 listaWallsInicial = [pygame.Rect(255,290,3,1200),pygame.Rect(256,1533,833,3),
             pygame.Rect(1090,1344,3,200),pygame.Rect(1087,833,3,325),
             pygame.Rect(1088,288,3,360),pygame.Rect(269,244,818,3),
@@ -36,7 +36,8 @@ listaWallsInicial = [pygame.Rect(255,290,3,1200),pygame.Rect(256,1533,833,3),
             pygame.Rect(4414,2208,194,3),pygame.Rect(4640,833,3,106),
             pygame.Rect(4642,1120,3,106),pygame.Rect(5408,895,96,1),
             pygame.Rect(5440,927,63,31),pygame.Rect(5439,1056,63,31),
-            pygame.Rect(5408,1088,96,31),pygame.Rect(5440,960,31,95)]
+            pygame.Rect(5408,1088,96,31),pygame.Rect(5440,960,31,95),puertaHielo,
+            pygame.Rect(4670,988,3,60)]
 
 enemigo1 = Enemigo("Enemigo 1",1529,556)
 enemigo2 = Enemigo("Enemigo 1",1400,750)

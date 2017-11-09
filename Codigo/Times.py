@@ -13,6 +13,12 @@ class Times(object):
         self.tiempoanterior = 0
         self.puertaAbierta = False
         self.nivelHielo = False
+        self.estaNivelHielo = False
+        self.nivelInicial = False
+        self.estaNivelInicial = True
+        self.nivelJefeFinal = False
+        self.estaNivelJefeFinal = False
+        self.segundos = 0
     def update_times(self):
         self.t+=1
         self.tde2+=1

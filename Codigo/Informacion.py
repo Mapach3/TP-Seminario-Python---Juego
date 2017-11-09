@@ -4,14 +4,15 @@ import Personaje
 class Informacion(pygame.sprite.Sprite):
     def __init__(self):
         self.listatexto=[]
-        #self.fondo=pygame.image.load("Informacion/Fondo.png").convert_alpha() 
-        #self.botones=pygame.image.load("Informacion/Botones.png").convert_alpha()
+        self.fondo=pygame.image.load("HUD/hudStats.png").convert_alpha() 
+        self.botones=pygame.image.load("HUD/hudhabilidades.png").convert_alpha()
        
     def update(self,pantalla,personaje):
         self.maketext(personaje)
         ypad=3
         ypad2=3
-       # pantalla.blit(self.fondo,(-1,0))        
+        pantalla.blit(self.fondo,(-1,0))        
+        pantalla.blit(self.botones,(100,500))
         for texto in self.listaTextos:
             pantalla.blit(texto,(40,ypad))
             ypad+=25
@@ -31,15 +32,13 @@ class Informacion(pygame.sprite.Sprite):
         self.textoPantalla4= pygame.font.SysFont("Arial", 14, True, False).render(self.texto4,0,(255,255,255))        
 
         if personaje.esta_furiozo:
-            self.texto5 = "Velocidad: " + str(personaje.velocidad*3)
+            self.texto5 = "Velocidad: " + str(personaje.velocidad*1.5)
         else:
             self.texto5 = "Velocidad: " + str(personaje.velocidad)
         self.textoPantalla5= pygame.font.SysFont("Arial", 14, True, False).render(self.texto5,0,(255,255,255))        
 
         self.texto6 = "Kills: " + str(personaje.kills) + " / " + str(personaje.killsToFuria)
         self.textoPantalla6= pygame.font.SysFont("Arial", 14, True, False).render(self.texto6,0,(255,255,255))        
-
-        
        
         
         self.listaTextos=[self.textoPantalla1,self.textoPantalla2,

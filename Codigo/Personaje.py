@@ -32,21 +32,22 @@ class Personaje(pygame.sprite.Sprite):
         self.subioLvl = False
         self.tienePotas = True
         self.esta_furiozo = False
+        self.seg_aux = 0
         
         #inventario
         self.oro = 0
         self.potas = 0
 
         #stats
-        self.hp = 100
-        self.hpMax = 100
+        self.hp = 500
+        self.hpMax = 500
         self.exp = 0
         self.expParaSubir = 100
-        self.velocidad = 5
+        self.velocidad = 7
         self.danio = 10
         self.lvl = 1
         self.kills = 0
-        self.killsToFuria = 1
+        self.killsToFuria = 5
 
     def mover(self,vx,vy):
         self.rect.move_ip(vx,vy)
@@ -102,21 +103,22 @@ class Personaje(pygame.sprite.Sprite):
                     flechasonido.play()
                     flechasonido.set_volume(0.14)
                 
-                if suceso == "poder" and self.lvl >= 2:
+                if suceso == "poder":
                     if self.puedeTirarPoder(listaFlechas):
                         self.movimiento = 3
                         flecha = Flecha(self,"poder")
                         listaFlechas.append(flecha)
                         podersonido.play()
                 
-                if suceso == "furia" and self.kills >= self.killsToFuria and self.lvl >= 3:
+                if suceso == "furia" and self.kills >= self.killsToFuria:
+                    furiasonido.set_volume(0.4)
                     furiasonido.play()
-                    podersonido.play()
                     self.esta_furiozo = True
                     self.kills = 0
                     self.danio = self.danio * 2
+                    self.seg_aux = t.segundos
                     
-                if t.tde200 == 200 and self.esta_furiozo == True:
+                if t.segundos - self.seg_aux >= 5 and self.esta_furiozo == True:
                     self.esta_furiozo = False
                     self.danio = self.danio / 2
                     
@@ -146,7 +148,6 @@ class Personaje(pygame.sprite.Sprite):
         self.danio += self.danio/4
         self.hpMax += self.hpMax/4
         self.hp = self.hpMax
-        self.velocidad += self.velocidad/5
 
 
 

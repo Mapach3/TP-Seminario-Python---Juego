@@ -22,16 +22,19 @@ enemigo11 = Enemigo("Enemigo 1",1490,1040)
 enemigo12 = Enemigo("Enemigo 2",1463,1275)
 enemigo13 = Enemigo("Enemigo 1",1158,1311)
 enemigo14 = Enemigo("Enemigo 2",1219,935)
+minijefe = Enemigo("Mini Jefe",2770,1214)
 
 ###pared = pygame.Rect(left,top,alto,ancho)
 
-listaEnemigosHielo = [enemigo1,enemigo2,enemigo3,enemigo4,enemigo5,enemigo6,enemigo7,enemigo8,enemigo9,enemigo10,enemigo11,enemigo12,enemigo13,enemigo14]
+listaEnemigosHielo = [enemigo1,enemigo2,enemigo3,enemigo4,enemigo5,enemigo6,enemigo7,enemigo8,enemigo9,enemigo10,enemigo11,enemigo12,enemigo13,enemigo14,minijefe]
+
+puertaJefeFinal = pygame.Rect(3700,1170,65,100)
 
 listaWallsHielo = [pygame.Rect(317,110,3,286),pygame.Rect(315,55,138,3),
                    pygame.Rect(452,112,3,157),pygame.Rect(323,398,606,3),
                    pygame.Rect(453,203,603,3),pygame.Rect(1056,269,3,562),
                    pygame.Rect(927,400,3,1136),pygame.Rect(927,1535,2017,3),
-                   pygame.Rect(2944,830,3,705),pygame.Rect(1078,765,1865,1),
+                   pygame.Rect(2944,830,3,3),pygame.Rect(1078,765,1865,1),
                    pygame.Rect(998,771,53,1),pygame.Rect(964,1218,53,1),
                    pygame.Rect(1346,1409,29,1),pygame.Rect(1697,1023,29,1),
                    pygame.Rect(1989,1185,53,1),pygame.Rect(1829,1443,53,1),
@@ -42,7 +45,7 @@ listaWallsHielo = [pygame.Rect(317,110,3,286),pygame.Rect(315,55,138,3),
                    pygame.Rect(1155,1358,62,45),pygame.Rect(1544,1375,84,66),
                    pygame.Rect(2019,1378,84,66),pygame.Rect(2272,1393,62,45),
                    pygame.Rect(2211,879,62,45),pygame.Rect(2533,1122,87,38),
-                   pygame.Rect(1653,1076,158,133)]
+                   pygame.Rect(1653,1076,158,133),puertaJefeFinal]
 
 
 fondoHielo = pygame.image.load("MapaHieloFinal.png")            

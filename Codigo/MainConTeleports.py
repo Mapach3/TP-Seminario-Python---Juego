@@ -175,7 +175,7 @@ def main():
             moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos)
         pygame.draw.rect(pantalla,rojo,teleport_hielo)
         pygame.display.update()
-        pygame.draw.rect(pantalla,rojo,teleport_hielo)
+        pygame.draw.rect(pantalla,(255,0,0),puertaHielo)
             
     pygame.quit()
     

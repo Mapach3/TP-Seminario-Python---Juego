@@ -13,7 +13,7 @@ class Enemigo(pygame.sprite.Sprite):
         self.tipo = tipo
         if self.tipo == "Enemigo 1":
             self.imagenes =  ListaAnimacionesMob1
-            self.dropExp = 20
+            self.dropExp = 25
             self.hpMax = 150
             self.hp = self.hpMax
             self.velocidad = 5
@@ -39,9 +39,9 @@ class Enemigo(pygame.sprite.Sprite):
         if self.tipo == "Jefe":
             self.imagenes = ListaAnimacionesJefe
             self.dropExp = 0
-            self.hpMax = 2000
+            self.hpMax = 2500
             self.hp = self.hpMax
-            self.velocidad = 12
+            self.velocidad = 10
             self.danio = 50
             
         
@@ -75,6 +75,8 @@ class Enemigo(pygame.sprite.Sprite):
         self.esta_golpeando = False
         self.poderBoss1 = False
         
+        #recorrido
+        self.distancia_max = 50
 
 
     def mover(self,vx,vy):
@@ -178,7 +180,7 @@ class Enemigo(pygame.sprite.Sprite):
                 self.animar()
                 
         if self.hp <= 0 and self.movimiento == 3 and self.imagen_actual == 3:
-            if self.tipo == "Jefe Final":
+            if self.tipo == "Jefe":
                 t.winner == True
             else:
                 personaje.hp += self.hpMax/10.0
@@ -189,13 +191,11 @@ class Enemigo(pygame.sprite.Sprite):
                     personaje.kills += 1
             self.destroy(listaEnemigos)
                 
-        
-        if self.hp <= 0 and self.movimiento == 3 and self.imagen_actual == 2 and self.tipo == "Boss 1":
-            personaje.hp += self.hpMax/10.0
-            self.destroy(listaEnemigos)  
-       
+        texto3 = str(self.hp) + " / " + str(self.hpMax) + " HP"
+        textoPantalla3= pygame.font.SysFont("Arial", 14, True, False).render(texto3,0,(255,255,255))        
+        superficie.blit(textoPantalla3,(self.rect.left,self.rect.top - 20))
         superficie.blit(self.imagen,self.rect)
-    
+        
     def seguir(self,personaje):
         if self.rect.left < personaje.rect.left:
             self.vx = self.velocidad
