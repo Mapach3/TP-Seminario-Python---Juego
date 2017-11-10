@@ -57,7 +57,7 @@ def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,list
             if wall.colliderect(personaje.rect):
                 if wall == puertaHielo and t.estaNivelInicial == True:
                     t.nivelHielo = True
-                if wall == puertaJefeFinal and t.estaNivelHielo == True:
+                if wall == puertaJefeFinal and t.estaNivelHielo == True and t.puertaAbierta == True:
                     t.nivelJefeFinal = True
                 vx,vy=-vx,-vy
                 colision=True
