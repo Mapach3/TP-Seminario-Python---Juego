@@ -72,10 +72,10 @@ def moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,list
         vy_enemigo = 0
     for enemigo in listaEnemigos:
         enemigo.update(pantalla, t, listaEnemigos, personaje, vx_enemigo, vy_enemigo, listaFlechas, colision,listaWalls)
-
-    personaje.update(pantalla, t, False, suceso, vx, vy,listaFlechas,colision)
-    for flecha in listaFlechas:
-        flecha.update(pantalla,listaFlechas,personaje,vx,vy,t)     
+    if t.winner == False:
+        personaje.update(pantalla, t, False, suceso, vx, vy,listaFlechas,colision)
+        for flecha in listaFlechas:
+            flecha.update(pantalla,listaFlechas,personaje,vx,vy,t)     
     informacion.update(pantalla,personaje)
 
 listaFlechas = []
@@ -84,7 +84,7 @@ listaEnemigos=[]
 fondo = Fondo(pygame.image.load("Mapa1Final.png"),0,0)
 
 def main(cargar=False):
-    
+    validacionwinner=False
     validaciongameover=False
     import pygame
     suceso = "no atacando"
@@ -159,6 +159,8 @@ def main(cargar=False):
                     if event.key == pygame.K_f:
                         suceso = "furia"
                     
+                    if event.key == pygame.K_p:
+                        pausa(pantalla,True)
                         
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT:
@@ -189,39 +191,48 @@ def main(cargar=False):
         t.segundos = pygame.time.get_ticks()/1000
         pantalla.fill((0,0,170))
         t.update_times()
-        if t.gameover == True:
-            pygame.mixer.music.stop()
-            pantalla.blit(gameover,(0,0))
-            if (validaciongameover == False):
-                gameoversonido.play()
-                validaciongameover= True
+        if t.winner == True:
+            pantalla.blit(pygame.image.load("Winner.png"),(0,0))
+            if (validacionwinner == False):
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load("Sonidos/victoria sonido.mid")
+                pygame.mixer.music.play()
+                validacionwinner = True
                 
-            
         else:
-            moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos,informacion)
-            if t.nivelHielo == True:
-                pygame.mixer.stop()
-                pygame.mixer.music.load("Sonidos/nieve.mid")
-                pygame.mixer.music.play(20)
-                pygame.mixer.music.set_volume(0.3)
-                t.estaNivelHielo = True
-                t.nivelHielo = False
-                listaWalls = listaWallsHielo
-                listaEnemigos = listaEnemigosHielo
-                fondo = Fondo(fondoHielo,0,0)
-                personaje.rect.left,personaje.rect.top = (350,250)
-            if t.nivelJefeFinal == True:
-                pygame.mixer.music.load("Sonidos/peleaboss.mp3")
-                pygame.mixer.music.play(20)
-                pygame.mixer.music.set_volume(0.4)
-                t.estaNivelJefeFinal = True
-                t.nivelJefeFinal = False
-                listaWalls = listaWallsJefeFinal
-                listaEnemigos = listaEnemigosJefe
-                fondo = Fondo(fondoJefeFinal,0,0)
-                personaje.rect.left,personaje.rect.top = (350,250)
-            
+            if t.gameover == True:
+                pygame.mixer.music.stop()
+                pantalla.blit(gameover,(0,0))
+                if (validaciongameover == False):
+                    gameoversonido.play()
+                    validaciongameover = True
+                    
                 
+            else:
+                moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos,informacion)
+                if t.nivelHielo == True:
+                    pygame.mixer.stop()
+                    pygame.mixer.music.load("Sonidos/nieve.mid")
+                    pygame.mixer.music.play(20)
+                    pygame.mixer.music.set_volume(0.3)
+                    t.estaNivelHielo = True
+                    t.nivelHielo = False
+                    listaWalls = listaWallsHielo
+                    listaEnemigos = listaEnemigosHielo
+                    fondo = Fondo(fondoHielo,0,0)
+                    personaje.rect.left,personaje.rect.top = (350,250)
+                if t.nivelJefeFinal == True:
+                    pygame.mixer.music.load("Sonidos/peleaboss.mp3")
+                    pygame.mixer.music.play(20)
+                    pygame.mixer.music.set_volume(0.4)
+                    t.estaNivelJefeFinal = True
+                    t.nivelJefeFinal = False
+                    listaWalls = listaWallsJefeFinal
+                    listaEnemigos = listaEnemigosJefe
+                    fondo = Fondo(fondoJefeFinal,0,0)
+                    personaje.rect.left,personaje.rect.top = (350,250)
+                
+                    
         pygame.display.update()
     pygame.quit()
     
@@ -344,123 +355,6 @@ def nivelJefeFinal(listaWalls,listaEnemigos,fondo):
     listaEnemigos = []
     fondo = Fondo(fondoJefeFinal,0,0)
     
-# def nivelHielo(personaje):
-#     validaciongameover=False
-#     import pygame
-#     suceso = "no atacando"
-#     pygame.init()
-#     pantalla=pygame.display.set_mode((800,600))
-#     salir=False
-#     reloj = pygame.time.Clock()
-#     gameover=pygame.image.load("GameOver.png")
-#     personaje = Personaje.Personaje()
-#     
-#     listaWalls = listaWallsHielo
-#     listaEnemigos = listaEnemigosHielo
-#     fondo = Fondo(fondoHielo,0,0)
-#     
-# #     listaWalls = listaWallsHielo
-# #     listaEnemigos = listaEnemigosHielo
-# #     fondo = Fondo(fondoHielo,0,0)
-# 
-# #     listaWalls = listaWallsJefeFinal
-# #     listaEnemigos = listaEnemigosJefe
-# #     fondo = Fondo(fondoJefeFinal,0,0)
-#     
-#     informacion = Informacion()
-# 
-#     vx,vy=0,0
-#     t = Times()
-#     
-#     leftsigueapretada,rightsigueapretada,downsigueapretada,upsigueapretada= False,False,False,False
-#     
-#     pantalla.blit(personaje.imagen,personaje.rect)
-#     pygame.mixer.music.load("Sonidos/bosque.mid")
-#     pygame.mixer.music.play()
-#     pygame.mixer.music.set_volume(0.15)
-#     while salir!=True:#LOOP PRINCIPAL
-#         reloj.tick(28)
-#         suceso = "no atacando"
-#         for event in pygame.event.get():
-#             if event.type == pygame.QUIT:
-#                 salir=True
-#             else:                                                                                    
-#                 if event.type == pygame.KEYDOWN:
-#                     
-#                     if event.key == pygame.K_ESCAPE:
-#                         return False
-#                     if event.key == pygame.K_LEFT:
-#                         leftsigueapretada = True
-#                         vx = -personaje.velocidad
-#                     if event.key == pygame.K_RIGHT:
-#                         rightsigueapretada = True
-#                         vx = personaje.velocidad
-#                     if event.key == pygame.K_UP:
-#                         upsigueapretada = True
-#                         vy = -personaje.velocidad
-#                     if event.key == pygame.K_DOWN:
-#                         downsigueapretada = True
-#                         vy = personaje.velocidad
-#                     
-#                     if event.key == pygame.K_a:
-#                         suceso = "espadazo"
-# 
-#                     if event.key == pygame.K_s:
-#                         suceso = "flechazo"
-#                         
-#                     if event.key == pygame.K_d:
-#                         suceso = "poder"
-#                     
-#                     if event.key == pygame.K_f:
-#                         suceso = "furia"
-#                     
-#                         
-#                 if event.type == pygame.KEYUP:
-#                     if event.key == pygame.K_LEFT:
-#                         leftsigueapretada = False
-#                         if rightsigueapretada: 
-#                             vx = personaje.velocidad
-#                         else:
-#                             vx = 0
-#                     if event.key == pygame.K_RIGHT:
-#                         rightsigueapretada = False
-#                         if leftsigueapretada:
-#                             vx = -personaje.velocidad
-#                         else:
-#                             vx = 0
-#                     if event.key == pygame.K_UP:
-#                         upsigueapretada = False
-#                         if downsigueapretada:
-#                             vy = personaje.velocidad
-#                         else:
-#                             vy = 0
-#                     if event.key == pygame.K_DOWN:
-#                         downsigueapretada = False
-#                         if upsigueapretada:
-#                             vy = -personaje.velocidad
-#                         else:
-#                             vy = 0          
-#                     
-#     
-#         pantalla.fill((0,0,170))
-#         t.update_times()
-#         if t.gameover == True:
-#             pygame.mixer.music.stop()
-#             if(validaciongameover==False):
-#                 gameoversonido.play()
-#                 validaciongameover=True
-#             pantalla.blit(gameover,(0,0))
-#         else:
-#             moverCosasPantalla(personaje,fondo,pantalla,vx,vy,t,suceso,listaFlechas,listaWalls,listaEnemigos,informacion)
-#             if t.nivelInicial == True:
-#                 t.nivelInicial = False
-#                 t.estaNivelHielo = False
-#                 t.estaNivelInicial = True
-#                 main()
-#     
-#                 
-#         pygame.display.update()
-#     pygame.quit()
 
 
     

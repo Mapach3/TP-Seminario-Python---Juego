@@ -13,24 +13,24 @@ class Enemigo(pygame.sprite.Sprite):
         self.tipo = tipo
         if self.tipo == "Enemigo 1":
             self.imagenes =  ListaAnimacionesMob1
-            self.dropExp = 25
-            self.hpMax = 150
+            self.dropExp = 35
+            self.hpMax = 100
             self.hp = self.hpMax
             self.velocidad = 5
             self.danio = 7
         
         if self.tipo == "Enemigo 2":
             self.imagenes = ListaAnimacionesMob2
-            self.dropExp = 50
-            self.hpMax = 225
+            self.dropExp = 70
+            self.hpMax = 250
             self.hp = self.hpMax
             self.velocidad = 7
             self.danio = 10
         
         if self.tipo == "Mini Jefe":
             self.imagenes = ListaAnimacionesMiniJefe
-            self.dropExp = 300
-            self.hpMax = 500
+            self.dropExp = 500
+            self.hpMax = 1000
             self.hp = self.hpMax
             self.velocidad = 10
             self.danio = 20
@@ -39,19 +39,11 @@ class Enemigo(pygame.sprite.Sprite):
         if self.tipo == "Jefe":
             self.imagenes = ListaAnimacionesJefe
             self.dropExp = 0
-            self.hpMax = 2500
+            self.hpMax = 7000
             self.hp = self.hpMax
             self.velocidad = 10
             self.danio = 50
             
-        
-        if self.tipo == "Jefe Final":
-            self.imagenes = imagenes 
-            self.dropExp = 0
-            self.hpMax = hpMax
-            self.hp = self.hpMax
-            self.velocidad = velocidad
-            self.danio = danio
         
         
         self.animacion = self.imagenes[0][0]
@@ -123,6 +115,8 @@ class Enemigo(pygame.sprite.Sprite):
                 
         
         if self.terminoAnimar():
+            if self.movimiento != 1:
+                self.imagen_actual = 0
             if self.vx == 0 and self.vy == 0:
                 self.movimiento = 0
                 self.moviendo = False
@@ -180,17 +174,17 @@ class Enemigo(pygame.sprite.Sprite):
             if t.t == 1:
                 self.animar()
                 
-        if self.hp <= 0 and self.movimiento == 3 and self.imagen_actual == 3:
-            if self.tipo == "Jefe":
-                t.winner == True
-            else:
+        if self.hp <= 0:
+            if t.winner == False and self.tipo == "Jefe":
+                t.winner = True
+            if self.movimiento == 3 and self.imagen_actual == 3:
                 personaje.hp += self.hpMax/10.0
                 personaje.exp += self.dropExp
                 if self.tipo == "Mini Jefe":
                     t.puertaAbierta = True
                 if not personaje.esta_furiozo:
                     personaje.kills += 1
-            self.destroy(listaEnemigos)
+                self.destroy(listaEnemigos)
                 
         texto3 = str(self.hp) + " / " + str(self.hpMax) + " HP"
         textoPantalla3= pygame.font.SysFont("Arial", 14, True, False).render(texto3,0,(255,255,255))        

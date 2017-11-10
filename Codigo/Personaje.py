@@ -43,11 +43,11 @@ class Personaje(pygame.sprite.Sprite):
         self.hpMax = 500
         self.exp = 0
         self.expParaSubir = 100
-        self.velocidad = 7
-        self.danio = 10
+        self.velocidad = 8
+        self.danio = 12
         self.lvl = 1
         self.kills = 0
-        self.killsToFuria = 5
+        self.killsToFuria = 4
 
     def mover(self,vx,vy):
         self.rect.move_ip(vx,vy)
@@ -72,59 +72,62 @@ class Personaje(pygame.sprite.Sprite):
             self.estaVivo = False
             t.gameover = True
         
-        if colision == False:
-            if vx < 0:
-                self.orientacion = 0
-            if vx > 0:
-                self.orientacion = 1
-        
-        if self.terminoAnimar():
-            if self.movimiento != 1:
-                self.imagen_actual = 0
+        if t.gameover == False and t.winner == False:
+            if colision == False:
+                if vx < 0:
+                    self.orientacion = 0
+                if vx > 0:
+                    self.orientacion = 1
             
-            if self.estaVivo == False:
-                self.movimiento = 5
-            else:
-                if vx == 0 and vy == 0 and self.movimiento != 4:
-                    self.movimiento = 0
-                else:
-                    self.movimiento = 1
-                    self.moviendo = True
-                
-                if suceso == "espadazo":
-                    self.movimiento = 2
-                    ataquesonido.play()
-                    ataquesonido.set_volume(0.2)
-                
-                if suceso == "flechazo":
-                    self.movimiento = 4
-                    flecha = Flecha(self,"flecha")
-                    listaFlechas.append(flecha)
-                    flechasonido.play()
-                    flechasonido.set_volume(0.14)
-                
-                if suceso == "poder":
-                    if self.puedeTirarPoder(listaFlechas):
-                        self.movimiento = 3
-                        flecha = Flecha(self,"poder")
-                        listaFlechas.append(flecha)
-                        podersonido.play()
-                
-                if suceso == "furia" and self.kills >= self.killsToFuria:
-                    furiasonido.set_volume(0.4)
-                    furiasonido.play()
-                    self.esta_furiozo = True
-                    self.kills = 0
-                    self.danio = self.danio * 2
-                    self.seg_aux = t.segundos
-                    
-                if t.segundos - self.seg_aux >= 5 and self.esta_furiozo == True:
-                    self.esta_furiozo = False
-                    self.danio = self.danio / 2
-                    
+            if self.terminoAnimar():
                 if self.movimiento != 1:
-                    self.moviendo = False
-            
+                    self.imagen_actual = 0
+                
+                if self.estaVivo == False:
+                    self.movimiento = 5
+                else:
+                    if vx == 0 and vy == 0 and self.movimiento != 4:
+                        self.movimiento = 0
+                    else:
+                        self.movimiento = 1
+                        self.moviendo = True
+                    
+                    if suceso == "espadazo":
+                        self.movimiento = 2
+                        ataquesonido.play()
+                        ataquesonido.set_volume(0.2)
+                    
+                    if suceso == "flechazo":
+                        self.movimiento = 4
+                        flecha = Flecha(self,"flecha")
+                        listaFlechas.append(flecha)
+                        flechasonido.play()
+                        flechasonido.set_volume(0.14)
+                    
+                    if suceso == "poder":
+                        if self.puedeTirarPoder(listaFlechas):
+                            self.movimiento = 3
+                            flecha = Flecha(self,"poder")
+                            listaFlechas.append(flecha)
+                            podersonido.play()
+                    
+                    if suceso == "furia" and self.kills >= self.killsToFuria:
+                        furiasonido.set_volume(0.8)
+                        furiasonido.play()
+                        self.esta_furiozo = True
+                        self.kills = 0
+                        self.danio = self.danio * 2
+                        self.seg_aux = t.segundos
+                        
+                    if t.segundos - self.seg_aux >= 5 and self.esta_furiozo == True:
+                        self.esta_furiozo = False
+                        self.danio = self.danio / 2
+                        
+                    if self.movimiento != 1:
+                        self.moviendo = False
+        else:
+            if t.winner == False:
+                self.movimiento = 5     
         self.animacion = self.imagenes[self.orientacion][self.movimiento]
         
         if t.t == 1:
@@ -145,8 +148,8 @@ class Personaje(pygame.sprite.Sprite):
         self.exp -= self.expParaSubir 
         self.expParaSubir += self.expParaSubir/4
         levelupsonido.play()
-        self.danio += self.danio/4
-        self.hpMax += self.hpMax/4
+        self.danio += self.danio/6
+        self.hpMax += self.hpMax/8
         self.hp = self.hpMax
 
 
