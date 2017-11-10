@@ -220,7 +220,7 @@ def main(cargar=False):
                 listaEnemigos = listaEnemigosJefe
                 fondo = Fondo(fondoJefeFinal,0,0)
                 personaje.rect.left,personaje.rect.top = (350,250)
-    
+            
                 
         pygame.display.update()
     pygame.quit()
@@ -289,12 +289,6 @@ def menu():
         relojmenu.tick(15)
         pantalla.blit(titulo,(50,-20)) #Posicion del titulo del juego
         pantalla.blit(descripcion,(170,660))  #Descripcion que va abajo de las opciones
-        #TEXTOS PARA CONTROLES
-        movim=fuente1.render("-Movimiento: Flechas Direccionales",0,(255,255,255))
-        atack1=fuente1.render("-Ataque 1: A",0,(255,255,255))
-        atack2=fuente1.render("-Ataque 2: D",0,(255,255,255))
-        atack3=fuente1.render("-Ataque 3: F",0,(255,255,255))
-        paus= fuente1.render("-Pulsa P para pausar el juego",0,(255,255,255))
         newgame.pintar(pantalla, c1)
         if cont==False:
             controles.pintar(pantalla, c1)
@@ -303,11 +297,9 @@ def menu():
         c1.updatecursor()
         
         if cont==True:
-            pantalla.blit(movim,(230,310))
-            pantalla.blit(atack1,(230,350))
-            pantalla.blit(atack2,(230,390))
-            pantalla.blit(atack3,(230,430))
-            pantalla.blit(paus,(230,470))
+            controles= pygame.image.load("Vengeance/controles1.png")
+            pantalla.blit(controles,(230,360))
+          
         
             
     
